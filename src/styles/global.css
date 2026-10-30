@@ -1,0 +1,131 @@
+:root {
+  --bg: #faf7f2;
+  --card: #ffffff;
+  --card-subtle: #f1ece4;
+  --text: #1e2420;
+  --text-2: #6b726d;
+  --primary: #2e7d4f;
+  --primary-pressed: #235f3c;
+  --primary-text: #2e7d4f;
+  --primary-tint: #e6f1e4;
+  --on-primary: #ffffff;
+  --border: #ece6dc;
+  --radius: 16px;
+  --measure: 70ch;
+  --wrap: 68rem;
+  --font: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #111513;
+    --card: #1c211e;
+    --card-subtle: #232926;
+    --text: #f2efe9;
+    --text-2: #a4aba6;
+    --primary-text: #7cc89a;
+    --primary-tint: #1e3322;
+    --border: #2c332f;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: var(--primary-text);
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+h1 {
+  font-size: clamp(1.9rem, 6vw, 2.75rem);
+  margin: 0 0 0.75rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin: 2.5rem 0 0.75rem;
+}
+
+.wrap {
+  width: 100%;
+  max-width: var(--wrap);
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.prose {
+  max-width: var(--measure);
+}
+
+.page {
+  padding-block: 2rem 3rem;
+}
+
+.lede {
+  font-size: 1.2rem;
+  color: var(--text-2);
+  max-width: 48ch;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+}
+
+.btn {
+  display: inline-block;
+  background: var(--primary);
+  color: var(--on-primary);
+  padding: 0.75rem 1.25rem;
+  border-radius: 14px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background: var(--primary-pressed);
+}
+
+:focus-visible {
+  outline: 3px solid var(--primary-text);
+  outline-offset: 2px;
+}

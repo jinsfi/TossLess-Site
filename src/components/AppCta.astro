@@ -1,0 +1,35 @@
+---
+import { site } from '../config/site';
+
+// Pre-launch placeholder. Phase 4 replaces the paragraph with WaitlistForm and the
+// launched branch with AppStoreBadge.
+---
+
+<section class="cta card">
+  {
+    site.app.launched ? (
+      <>
+        <h2>Get TossLess</h2>
+        <p>Download TossLess on the App Store.</p>
+      </>
+    ) : (
+      <>
+        <h2>TossLess is coming soon</h2>
+        <p>The waitlist opens shortly. Questions? Write to <a href={`mailto:${site.contactEmail}`}>{site.contactEmail}</a>.</p>
+      </>
+    )
+  }
+</section>
+
+<style>
+  .cta {
+    background: var(--primary-tint);
+    margin-block: 2rem;
+  }
+  h2 {
+    margin-top: 0;
+  }
+  p {
+    margin-bottom: 0;
+  }
+</style>

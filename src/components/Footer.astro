@@ -1,0 +1,31 @@
+---
+import { site } from '../config/site';
+---
+
+<footer>
+  <div class="wrap">
+    <nav aria-label="Footer">
+      <a href="/press/">Press</a>
+      <a href="/privacy/">Privacy</a>
+      <a href={`mailto:${site.contactEmail}`}>{site.contactEmail}</a>
+    </nav>
+    <p>© {new Date().getFullYear()} {site.name}</p>
+  </div>
+</footer>
+
+<style>
+  footer {
+    border-top: 1px solid var(--border);
+    padding-block: 1.5rem;
+    color: var(--text-2);
+    font-size: 0.95rem;
+  }
+  nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 1.25rem;
+  }
+  p {
+    margin: 0.75rem 0 0;
+  }
+</style>

@@ -1,0 +1,47 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AppCta from '../../components/AppCta.astro';
+
+const printables = [
+  { title: 'Fridge and freezer storage chart', text: 'A one-page chart of how long common foods keep.' },
+  { title: 'Freezer inventory', text: 'A sheet to track what is in your freezer and when it went in.' },
+  { title: 'Fridge inventory', text: 'A sheet to track what is in your fridge and what to use first.' },
+];
+---
+
+<BaseLayout title="Free printables" description="Free printable food storage charts and fridge and freezer inventory sheets to help you waste less food.">
+  <div class="wrap page">
+    <h1>Free printables</h1>
+    <p class="lede">Printable sheets for your kitchen. They are being finished and will appear here.</p>
+    <ul class="grid">
+      {
+        printables.map((p) => (
+          <li class="card">
+            <h2>{p.title}</h2>
+            <p>{p.text}</p>
+            <p class="soon">Coming soon</p>
+          </li>
+        ))
+      }
+    </ul>
+    <AppCta />
+  </div>
+</BaseLayout>
+
+<style>
+  .grid {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  }
+  h2 {
+    font-size: 1.15rem;
+    margin-top: 0;
+  }
+  .soon {
+    color: var(--text-2);
+    margin-bottom: 0;
+  }
+</style>

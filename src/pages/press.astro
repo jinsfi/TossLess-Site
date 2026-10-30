@@ -1,0 +1,46 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../config/site';
+import home from '../assets/screenshots/home.png';
+import itemDetail from '../assets/screenshots/item-detail.png';
+---
+
+<BaseLayout title="Press kit" description="Logo, screenshots, a short description and contact details for writing about TossLess.">
+  <div class="wrap page prose">
+    <h1>Press kit</h1>
+
+    <h2>About in two sentences</h2>
+    <p>
+      TossLess is a food-tracking app that shows you what to eat first. Add food in seconds, get one reminder a day, and stop
+      throwing food and money away.
+    </p>
+
+    <h2>Icon</h2>
+    <img src="/press/tossless-icon.svg" alt="The TossLess app icon: a white leaf on a green rounded square." width="96" height="96" />
+    <p><a href="/press/tossless-icon.svg" download>Download the icon (SVG)</a></p>
+
+    <h2>Screenshots</h2>
+    <div class="shots">
+      <Image src={home} alt="TossLess home screen listing foods to use soon." widths={[240, 360]} sizes="15rem" />
+      <Image src={itemDetail} alt="TossLess detail screen for opened Greek yogurt showing 2 days left." widths={[240, 360]} sizes="15rem" />
+    </div>
+
+    <h2>Contact</h2>
+    <p><a href={`mailto:${site.contactEmail}`}>{site.contactEmail}</a></p>
+  </div>
+</BaseLayout>
+
+<style>
+  .shots {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .shots :global(img) {
+    width: 15rem;
+    max-width: 100%;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+  }
+</style>

@@ -1,0 +1,25 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../config/site';
+---
+
+<BaseLayout title="About" description="What TossLess is, why it exists, and how every article is fact-checked against official food-safety sources.">
+  <div class="wrap page prose">
+    <h1>About TossLess</h1>
+    <p>
+      TossLess is an app that helps you use food before it goes off. You add food in seconds, see what to eat first, and get one
+      reminder a day.
+    </p>
+    <h2>Why it exists</h2>
+    <!-- OWNER: review and rewrite this section in your own words. -->
+    <p>Throwing away food wastes money and the effort that went into growing it. TossLess is built to make the right choice the easy one: know what you have, and eat it in time.</p>
+
+    <h2 id="how-we-check">How we check facts</h2>
+    <ul>
+      <li>Storage times and safety advice come from official food-safety agencies only, and every article links to its sources.</li>
+      <li>Every article shows the date its facts were last checked.</li>
+      <li>When official sources disagree, we use the more cautious figure and say so.</li>
+      <li>Spotted a mistake? Email <a href={`mailto:${site.contactEmail}`}>{site.contactEmail}</a> and we will correct it.</li>
+    </ul>
+  </div>
+</BaseLayout>

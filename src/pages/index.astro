@@ -1,17 +1,67 @@
 ---
+import { Image } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AppCta from '../components/AppCta.astro';
 import { site } from '../config/site';
+import home from '../assets/screenshots/home.png';
+import addFood from '../assets/screenshots/add-food.png';
+import itemDetail from '../assets/screenshots/item-detail.png';
+import stats from '../assets/screenshots/stats.png';
+
+const shots = [
+  { src: home, alt: 'TossLess home screen listing foods to use soon, with chicken breast due today and baby spinach due tomorrow.' },
+  { src: addFood, alt: 'TossLess add-food sheet searching for "chick", with chicken results and a one-tap add button.' },
+  { src: itemDetail, alt: 'TossLess detail screen for opened Greek yogurt showing 2 days left, with Eaten, Freeze it and Tossed buttons.' },
+  { src: stats, alt: 'TossLess stats screen showing money saved this month, a streak without tossing food, and eaten versus tossed.' },
+];
 ---
 
-<html lang={site.lang}>
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{site.name}</title>
-	</head>
-	<body>
-		<h1>{site.name}</h1>
-		<p>{site.tagline}</p>
-	</body>
-</html>
+<BaseLayout title={site.tagline} description={site.tagline} home>
+  <div class="wrap page">
+    <h1>Know what to eat first.</h1>
+    <p class="lede">TossLess tells you what in your kitchen to use next, with one reminder a day, so less food and money ends up in the bin.</p>
+
+    <ul class="shots">
+      {
+        shots.map((s) => (
+          <li>
+            <Image src={s.src} alt={s.alt} widths={[240, 360, 480]} sizes="(min-width: 48rem) 15rem, 45vw" />
+          </li>
+        ))
+      }
+    </ul>
+
+    <AppCta />
+
+    <h2>Latest articles</h2>
+    <p class="muted">Articles on food storage and food waste are on the way.</p>
+  </div>
+</BaseLayout>
+
+<style>
+  .shots {
+    list-style: none;
+    padding: 0;
+    margin: 2rem 0 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+  @media (min-width: 48rem) {
+    .shots {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+  }
+  .shots :global(img) {
+    width: 100%;
+    aspect-ratio: 9 / 19.5;
+    object-fit: cover;
+    object-position: top;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+  }
+  .muted {
+    color: var(--text-2);
+  }
+</style>

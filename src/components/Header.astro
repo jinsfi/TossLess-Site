@@ -1,0 +1,61 @@
+---
+import { site } from '../config/site';
+
+// Shelf-life joins the nav when the page exists (Phase 7).
+const links = [
+  { href: '/blog/', label: 'Blog' },
+  { href: '/printables/', label: 'Printables' },
+  { href: '/about/', label: 'About' },
+];
+const path = Astro.url.pathname;
+---
+
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="/">
+      <img src="/logo.svg" alt="" width="32" height="32" />
+      <span>{site.name}</span>
+    </a>
+    <nav aria-label="Main">
+      {links.map((l) => <a href={l.href} aria-current={path.startsWith(l.href) ? 'page' : undefined}>{l.label}</a>)}
+    </nav>
+  </div>
+</header>
+
+<style>
+  header {
+    border-bottom: 1px solid var(--border);
+    background: var(--bg);
+  }
+  .bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem 1rem;
+    padding-block: 0.75rem;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text);
+    font-weight: 700;
+    font-size: 1.2rem;
+    text-decoration: none;
+  }
+  nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 1rem;
+  }
+  nav a {
+    color: var(--text);
+    text-decoration: none;
+    padding: 0.4rem 0;
+  }
+  nav a:hover,
+  nav a[aria-current='page'] {
+    color: var(--primary-text);
+  }
+</style>

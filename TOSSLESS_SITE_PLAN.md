@@ -203,10 +203,10 @@ export const site = {
 
 **Acceptance criteria**
 
-- [ ] All pages in the site map exist (except shelf-life, Phase 7) and build.
-- [ ] No horizontal scrolling at 360 px width.
-- [ ] `<html lang>` matches `site.lang`.
-- [ ] Every image has meaningful `alt` text; screenshots use Astro's image optimization.
+- [x] All pages in the site map exist (except shelf-life, Phase 7) and build.
+- [x] No horizontal scrolling at 360 px width.
+- [x] `<html lang>` matches `site.lang`.
+- [x] Every image has meaningful `alt` text; screenshots use Astro's image optimization.
 
 ### Phase 3 — SEO plumbing
 
