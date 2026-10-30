@@ -188,9 +188,9 @@ export const site = {
 **Acceptance criteria**
 
 - [x] `npm run build` succeeds with no warnings about missing `site`.
-- [ ] The site loads on a Cloudflare preview URL.
-- [ ] Pushing to `main` triggers a new deploy.
-- [ ] The custom domain serves the site over HTTPS (once the owner has bought it).
+- [x] The site loads on a Cloudflare preview URL. (workers.dev URL is switched off; the site is served on the custom domain.)
+- [x] Pushing to `main` triggers a new deploy.
+- [x] The custom domain serves the site over HTTPS (once the owner has bought it).
 
 ### Phase 2 — Layout and core pages
 
