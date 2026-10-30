@@ -1,0 +1,17 @@
+---
+import { site } from '../config/site';
+---
+
+<html lang={site.lang}>
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{site.name}</title>
+	</head>
+	<body>
+		<h1>{site.name}</h1>
+		<p>{site.tagline}</p>
+	</body>
+</html>
