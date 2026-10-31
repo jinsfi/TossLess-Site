@@ -321,9 +321,9 @@ draft: true
 
 **Acceptance criteria**
 
-- [ ] Entries without a verified source never appear on the page.
-- [ ] Search finds foods by aliases, ignoring case and accents.
-- [ ] The page is usable at 360 px width and with JavaScript off.
+- [x] Entries without a verified source never appear on the page.
+- [x] Search finds foods by aliases, ignoring case and accents.
+- [x] The page is usable at 360 px width and with JavaScript off.
 
 ### Phase 8 — Launch switch (run when Apple approves the app)
 
@@ -374,7 +374,7 @@ Week 1 starts Monday 2 November 2026. Two pieces a week, in this order. Swap any
 | 14 | 8 | Dec 21–27 | Opened jar of pasta sauce: how long in the fridge? | fridge | opened-pasta-sauce-fridge | Not started |
 | 15 | 9 | Dec 28–Jan 3 | How long meat keeps in the freezer | freezer | how-long-meat-keeps-in-freezer | Not started |
 | 16 | 9 | Dec 28–Jan 3 | 10 habits that stop you throwing away food | habits | habits-to-stop-wasting-food | Not started |
-| 17 | 10 | Jan 4–10 | Shelf-life lookup page (search a food, see storage times) | tool | /shelf-life/ | Not started |
+| 17 | 10 | Jan 4–10 | Shelf-life lookup page (search a food, see storage times) | tool | /shelf-life/ | Built (53 verified foods) |
 | 18 | 10 | Jan 4–10 | Hard-boiled eggs: how long they keep | fridge | hard-boiled-eggs-how-long | Not started |
 | 19 | 11 | Jan 11–17 | Freezer burn: is the food still safe? | freezer | freezer-burn-safe-to-eat | Not started |
 | 20 | 11 | Jan 11–17 | What to cook with food that's about to expire | habits | cook-food-about-to-expire | Not started |

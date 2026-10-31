@@ -1,0 +1,221 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AppCta from '../components/AppCta.astro';
+// Only verified foods: scripts/check-foods.mjs drops entries without a source or with TODO-VERIFY.
+import foods from '../data/foods.verified.json';
+
+interface Food {
+  id: string;
+  name: string;
+  aliases: string[];
+  category: string;
+  pantry: string | null;
+  fridge: string | null;
+  freezer: string | null;
+  notes: string;
+  source: { name: string; url: string };
+  article: string;
+}
+
+const groups: Record<string, string> = {
+  salads: 'Salads',
+  deli: 'Hot dogs, deli meat, sausage and bacon',
+  meat: 'Beef, pork, lamb and ham',
+  poultry: 'Chicken and turkey',
+  seafood: 'Fish and shellfish',
+  eggs: 'Eggs, egg dishes and pies',
+  prepared: 'Soups, leftovers and prepared foods',
+  canned: 'Canned foods',
+};
+
+// Link to a full article only when it is published.
+const published = new Set((await getCollection('blog', ({ data }) => !data.draft)).map((a) => `/blog/${a.id}/`));
+const articleTitle = new Map((await getCollection('blog', ({ data }) => !data.draft)).map((a) => [`/blog/${a.id}/`, a.data.title]));
+
+// Strip accents and case so "Crème" matches "creme"; the page script does the same to what you type.
+const normalize = (s: string) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+
+const list = (foods as Food[]).map((f) => ({ ...f, search: normalize([f.name, ...f.aliases].join(' ')) }));
+const sections = Object.entries(groups)
+  .map(([key, label]) => ({ key, label, items: list.filter((f) => f.category === key) }))
+  .filter((s) => s.items.length > 0);
+---
+
+<BaseLayout
+  title="Food shelf life lookup"
+  description="Search how long common foods keep in the pantry, fridge and freezer, with the official source for every entry."
+>
+  <div class="wrap page">
+    <h1>Food shelf life lookup</h1>
+    <p class="lede">
+      Search a food to see how long it keeps in the pantry, fridge and freezer. Every entry comes from an official US source, linked on each card.
+    </p>
+
+    <div class="search" id="search-box" hidden>
+      <label for="q">Search for a food</label>
+      <input id="q" type="search" placeholder="Try “ham”, “salmon” or “leftovers”" autocomplete="off" />
+      <p id="status" role="status" aria-live="polite"></p>
+    </div>
+
+    <p class="note">
+      These are guidelines. Fridge times keep food from spoiling or becoming dangerous to eat, and freezer times are for quality only. Check food for
+      signs of spoilage before you eat it.
+    </p>
+
+    <div id="results">
+      {
+        sections.map((s) => (
+          <section class="group" data-group>
+            <h2>{s.label}</h2>
+            <ul class="foods">
+              {s.items.map((f) => (
+                <li class="card food" data-search={f.search}>
+                  <h3>{f.name}</h3>
+                  <dl>
+                    <div><dt>Pantry</dt><dd>{f.pantry ?? '—'}</dd></div>
+                    <div><dt>Fridge</dt><dd>{f.fridge ?? '—'}</dd></div>
+                    <div><dt>Freezer</dt><dd>{f.freezer ?? '—'}</dd></div>
+                  </dl>
+                  {f.notes && <p class="notes">{f.notes}</p>}
+                  <p class="links">
+                    <a href={f.source.url} rel="noopener">Source: {f.source.name}</a>
+                    {f.article && published.has(f.article) && (
+                      <>
+                        <br />
+                        <a href={f.article}>Read more: {articleTitle.get(f.article)}</a>
+                      </>
+                    )}
+                  </p>
+                </li>
+              ))}
+            </ul>
+          </section>
+        ))
+      }
+    </div>
+
+    <AppCta heading="TossLess tracks this for you" />
+  </div>
+</BaseLayout>
+
+<style>
+  .search {
+    margin: 1.5rem 0 1rem;
+    position: sticky;
+    top: var(--header);
+    z-index: 2;
+    padding-block: 0.75rem;
+    background: var(--bg);
+  }
+  .search label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.35rem;
+  }
+  .search input {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    font: inherit;
+    color: var(--text);
+    background: var(--card);
+    border: 1.5px solid var(--border);
+    border-radius: 14px;
+  }
+  .search input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary) 25%, transparent);
+  }
+  #status {
+    margin: 0.4rem 0 0;
+    color: var(--text-2);
+    font-size: 0.9rem;
+    min-height: 1.3em;
+  }
+  .note {
+    color: var(--text-2);
+    font-size: 0.95rem;
+  }
+  .group h2 {
+    font-size: 1.25rem;
+    margin: 2rem 0 0.75rem;
+  }
+  .foods {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.75rem;
+    grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
+  }
+  .food {
+    padding: 1rem;
+  }
+  h3 {
+    font-size: 1.05rem;
+    line-height: 1.3;
+    margin: 0 0 0.6rem;
+  }
+  dl {
+    margin: 0;
+    display: grid;
+    gap: 0.25rem;
+  }
+  dl div {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-block: 0.25rem;
+    border-top: 1px solid var(--border);
+  }
+  dt {
+    color: var(--text-2);
+    flex: none;
+  }
+  dd {
+    margin: 0;
+    font-weight: 600;
+    text-align: right;
+  }
+  .notes {
+    margin: 0.6rem 0 0;
+    font-size: 0.9rem;
+    color: var(--text-2);
+  }
+  .links {
+    margin: 0.6rem 0 0;
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
+  [hidden] {
+    display: none !important;
+  }
+</style>
+
+<script>
+  // Without JavaScript the full list is shown. With it, the search box appears and filters the cards.
+  const normalize = (s: string) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+
+  const box = document.getElementById('search-box') as HTMLElement;
+  const input = document.getElementById('q') as HTMLInputElement;
+  const status = document.getElementById('status') as HTMLElement;
+  const cards = Array.from(document.querySelectorAll<HTMLElement>('.food'));
+  const groups = Array.from(document.querySelectorAll<HTMLElement>('[data-group]'));
+
+  function filter() {
+    const words = normalize(input.value).split(/\s+/).filter(Boolean);
+    let shown = 0;
+    for (const card of cards) {
+      const match = words.every((w) => (card.dataset.search ?? '').includes(w));
+      card.hidden = !match;
+      if (match) shown++;
+    }
+    for (const group of groups) group.hidden = !group.querySelector('.food:not([hidden])');
+    status.textContent = words.length === 0 ? '' : shown === 0 ? 'No foods found. Try a simpler word.' : `${shown} ${shown === 1 ? 'food' : 'foods'} found`;
+  }
+
+  box.hidden = false;
+  input.addEventListener('input', filter);
+  filter();
+</script>

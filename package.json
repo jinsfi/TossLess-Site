@@ -10,7 +10,9 @@
     "build": "astro build && node scripts/check-seo.mjs",
     "preview": "astro preview",
     "astro": "astro",
-    "printables": "node scripts/generate-printables.mjs"
+    "printables": "node scripts/generate-printables.mjs",
+    "prebuild": "node scripts/check-foods.mjs",
+    "predev": "node scripts/check-foods.mjs"
   },
   "dependencies": {
     "@astrojs/rss": "^4.0.19",

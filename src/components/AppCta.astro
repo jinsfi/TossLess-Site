@@ -3,6 +3,12 @@ import { site } from '../config/site';
 import WaitlistForm from './WaitlistForm.astro';
 import AppStoreBadge from './AppStoreBadge.astro';
 
+interface Props {
+  heading?: string; // overrides the default heading, e.g. on the shelf-life page
+}
+
+const { heading } = Astro.props;
+
 // launched: App Store badge. Not launched: the waitlist form, once the Kit form action is set.
 const formReady = Boolean(site.kit.formAction) && site.kit.formAction !== 'TODO';
 if (!site.app.launched && !formReady) {
@@ -14,13 +20,13 @@ if (!site.app.launched && !formReady) {
   {
     site.app.launched ? (
       <>
-        <h2>Get TossLess</h2>
+        <h2>{heading ?? 'Get TossLess'}</h2>
         <p>Know what to eat first. Download TossLess on the App Store.</p>
         <AppStoreBadge />
       </>
     ) : (
       <>
-        <h2>Get notified when TossLess launches</h2>
+        <h2>{heading ?? 'Get notified when TossLess launches'}</h2>
         {formReady ? (
           <WaitlistForm />
         ) : (

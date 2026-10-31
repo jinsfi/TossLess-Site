@@ -1,0 +1,975 @@
+[
+  {
+    "id": "egg-chicken-ham-tuna-macaroni-salad",
+    "name": "Egg, chicken, ham, tuna and macaroni salads",
+    "aliases": [
+      "egg salad",
+      "chicken salad",
+      "ham salad",
+      "tuna salad",
+      "macaroni salad"
+    ],
+    "category": "salads",
+    "pantry": null,
+    "fridge": "3 to 4 days",
+    "freezer": "Does not freeze well",
+    "notes": "",
+    "source": {
+      "name": "FoodSafety.gov, Cold Food Storage Chart (last reviewed September 19, 2023)",
+      "url": "https://www.foodsafety.gov/food-safety-charts/cold-food-storage-charts"
+    },
+    "article": ""
+  },
+  {
+    "id": "hot-dogs-opened",
+    "name": "Hot dogs, opened package",
+    "aliases": [
+      "hot dog",
+      "hotdogs",
+      "frankfurters"
+    ],
+    "category": "deli",
+    "pantry": null,
+    "fridge": "1 week",
+    "freezer": "1 to 2 months",
+    "notes": "",
+    "source": {
+      "name": "FoodSafety.gov, Cold Food Storage Chart (last reviewed September 19, 2023)",
+      "url": "https://www.foodsafety.gov/food-safety-charts/cold-food-storage-charts"
+    },
+    "article": ""
+  },
+  {
+    "id": "hot-dogs-unopened",
+    "name": "Hot dogs, unopened package",
+    "aliases": [
+      "hot dog",
+      "hotdogs",
+      "frankfurters"
+    ],
+    "category": "deli",
+    "pantry": null,
+    "fridge": "2 weeks",
+    "freezer": "1 to 2 months",
+    "notes": "",
+    "source": {
+      "name": "FoodSafety.gov, Cold Food Storage Chart (last reviewed September 19, 2023)",
+      "url": "https://www.foodsafety.gov/food-safety-charts/cold-food-storage-charts"
+    },
+    "article": ""
+  },
+  {
+    "id": "luncheon-meat-opened",
+    "name": "Luncheon meat, opened package or deli sliced",
+    "aliases": [
+      "deli meat",
+      "lunch meat",
+      "cold cuts",
+      "sliced meat"
+    ],
+    "category": "deli",
+    "pantry": null,
+    "fridge": "3 to 5 days",
+    "freezer": "1 to 2 months",
+    "notes": "",
+    "source": {
+      "name": "FoodSafety.gov, Cold Food Storage Chart (last reviewed September 19, 2023)",
+      "url": "https://www.foodsafety.gov/food-safety-charts/cold-food-storage-charts"
+    },
+    "article": ""
+  },
+  {
+    "id": "luncheon-meat-unopened",
+    "name": "Luncheon meat, unopened package",
+    "aliases": [
+      "deli meat",
+      "lunch meat",
+      "cold cuts"
+    ],
+    "category": "deli",
+    "pantry": null,
+    "fridge": "2 weeks",
+    "freezer": "1 to 2 months",
+    "notes": "",
+    "source": {
+      "name": "FoodSafety.gov, Cold Food Storage Chart (last reviewed September 19, 2023)",
+      "url": "https://www.foodsafety.gov/food-safety-charts/cold-food-storage-charts"
+    },
+    "article": ""
+  },
+  {
+    "id": "bacon",
+    "name": "Bacon",
+    "aliases": [],
+    "category": "deli",
+    "pantry": null,
+    "fridge": "1 week",
+    "freezer": "1 month",
+    "notes": "",
+    "source": {
+      "name": "FoodSafety.gov, Cold Food Storage Chart (last reviewed September 19, 2023)",
+      "url": "https://www.foodsafety.gov/food-safety-charts/cold-food-storage-charts"
+    },
+    "article": ""
+  },
+  {
+    "id": "sausage-raw",
+    "name": "Sausage, raw, from chicken, turkey, pork, or beef",
+    "aliases": [
+      "raw sausage"
+    ],
+    "category": "deli",
+    "pantry": null,
+    "fridge": "1 to 2 days",
+    "freezer": "1 to 2 months",
+    "notes": "",
+    "source": {
+      "name": "FoodSafety.gov, Cold Food Storage Chart (last reviewed September 19, 2023)",
+      "url": "https://www.foodsafety.gov/food-safety-charts/cold-food-storage-charts"
+    },
+    "article": ""
+  },
+  {
+    "id": "sausage-fully-cooked",
+    "name": "Sausage, fully cooked, from chicken, turkey, pork, or beef",
+    "aliases": [
+      "cooked sausage"
+    ],
+    "category": "deli",
+    "pantry": null,
+    "fridge": "1 week",
+    "freezer": "1 to 2 months",
+    "notes": "",
+    "source": {
+      "name": "FoodSafety.gov, Cold Food Storage Chart (last reviewed September 19, 2023)",
+      "url": "https://www.foodsafety.gov/food-safety-charts/cold-food-storage-charts"
+    },
+    "article": ""
+  },
+  {
+    "id": "sausage-purchased-frozen",
+    "name": "Sausage, purchased frozen",
+    "aliases": [
+      "frozen sausage"
+    ],
+    "category": "deli",
+    "pantry": null,
+    "fridge": "After cooking, 3-4 days",
+    "freezer": "1-2 months from date of purchase",
+    "notes": "",
+    "source": {
+      "name": "FoodSafety.gov, Cold Food Storage Chart (last reviewed September 19, 2023)",
+      "url": "https://www.foodsafety.gov/food-safety-charts/cold-food-storage-charts"
+    },
+    "article": ""
+  },
+  {
+    "id": "ground-meat-and-poultry",
+    "name": "Hamburger, ground meats and ground poultry",
+    "aliases": [
+      "ground beef",
+      "hamburger",
+      "mince",
+      "minced meat",
+      "ground turkey",
+      "ground chicken",
+      "ground pork",
+      "ground lamb",
+      "ground veal"
+    ],
+    "category": "meat",
+    "pantry": null,
+    "fridge": "1 to 2 days",
+    "freezer": "3 to 4 months",
+    "notes": "Applies to ground beef, turkey, chicken, other poultry, veal, pork, lamb, and mixtures of them.",
+    "source": {
+      "name": "FoodSafety.gov, Cold Food Storage Chart (last reviewed September 19, 2023)",
+      "url": "https://www.foodsafety.gov/food-safety-charts/cold-food-storage-charts"
+    },
+    "article": ""
+  },
+  {
+    "id": "fresh-steaks",
+    "name": "Fresh beef, veal, lamb and pork: steaks",
+    "aliases": [
+      "steak",
+      "beef steak",
+      "pork steak"
+    ],
+    "category": "meat",
+    "pantry": null,
+    "fridge": "3 to 5 days",
+    "freezer": "4 to 12 months",
+    "notes": "",
+    "source": {
+      "name": "FoodSafety.gov, Cold Food Storage Chart (last reviewed September 19, 2023)",
+      "url": "https://www.foodsafety.gov/food-safety-charts/cold-food-storage-charts"
+    },
+    "article": ""
+  },
+  {
+    "id": "fresh-chops",
+    "name": "Fresh beef, veal, lamb and pork: chops",
+    "aliases": [
+      "pork chop",
+      "lamb chop",
+      "chops"
+    ],
+    "category": "meat",
+    "pantry": null,
+    "fridge": "3 to 5 days",
+    "freezer": "4 to 12 months",
+    "notes": "",
+    "source": {
+      "name": "FoodSafety.gov, Cold Food Storage Chart (last reviewed September 19, 2023)",
+      "url": "https://www.foodsafety.gov/food-safety-charts/cold-food-storage-charts"
+    },
+    "article": ""
+  },
+  {
+    "id": "fresh-roasts",
+    "name": "Fresh beef, veal, lamb and pork: roasts",
+    "aliases": [
+      "roast",
+      "beef roast",
+      "pork roast"
+    ],
+    "category": "meat",
+    "pantry": null,
+    "fridge": "3 to 5 days",
+    "freezer": "4 to 12 months",
+    "notes": "",
+    "source": {
+      "name": "FoodSafety.gov, Cold Food Storage Chart (last reviewed September 19, 2023)",
+      "url": "https://www.foodsafety.gov/food-safety-charts/cold-food-storage-charts"
+    },
+    "article": ""
+  },
+  {
+    "id": "ham-fresh-uncured-uncooked",
+    "name": "Ham, fresh, uncured, uncooked",
+    "aliases": [
+      "fresh ham",
+      "raw ham"
+    ],
+    "category": "meat",
+    "pantry": null,
+    "fridge": "3 to 5 days",
+    "freezer": "6 months",
+    "notes": "",
+    "source": {
+      "name": "FoodSafety.gov, Cold Food Storage Chart (last reviewed September 19, 2023)",
+      "url": "https://www.foodsafety.gov/food-safety-charts/cold-food-storage-charts"
+    },
+    "article": ""
+  },
+  {
+    "id": "ham-fresh-uncured-cooked",
+    "name": "Ham, fresh, uncured, cooked",
+    "aliases": [
+      "cooked fresh ham"
+    ],
+    "category": "meat",
+    "pantry": null,
+    "fridge": "3 to 4 days",
+    "freezer": "3 to 4 months",
+    "notes": "",
+    "source": {
+      "name": "FoodSafety.gov, Cold Food Storage Chart (last reviewed September 19, 2023)",
+      "url": "https://www.foodsafety.gov/food-safety-charts/cold-food-storage-charts"
+    },
+    "article": ""
+  },
+  {
+    "id": "ham-cured-uncooked",
+    "name": "Ham, cured, cook-before-eating, uncooked",
+    "aliases": [
+      "cured ham"
+    ],
+    "category": "meat",
+    "pantry": null,
+    "fridge": "5 to 7 days or “use by” date",
+    "freezer": "3 to 4 months",
+    "notes": "",
+    "source": {
+      "name": "FoodSafety.gov, Cold Food Storage Chart (last reviewed September 19, 2023)",
+      "url": "https://www.foodsafety.gov/food-safety-charts/cold-food-storage-charts"
+    },
+    "article": ""
+  },
+  {
+    "id": "ham-fully-cooked-vacuum-sealed",
+    "name": "Ham, fully cooked, vacuum-sealed at plant, unopened",
+    "aliases": [
+      "vacuum packed ham"
+    ],
+    "category": "meat",
+    "pantry": null,
+    "fridge": "2 weeks or “use by” date",
+    "freezer": "1 to 2 months",
+    "notes": "",
+    "source": {
+      "name": "FoodSafety.gov, Cold Food Storage Chart (last reviewed September 19, 2023)",
+      "url": "https://www.foodsafety.gov/food-safety-charts/cold-food-storage-charts"
+    },
+    "article": ""
+  },
+  {
+    "id": "ham-cooked-whole",
+    "name": "Ham, cooked, store-wrapped, whole",
+    "aliases": [
+      "cooked ham",
+      "ham"
+    ],
+    "category": "meat",
+    "pantry": null,
+    "fridge": "1 week",
+    "freezer": "1 to 2 months",
+    "notes": "",
+    "source": {
+      "name": "FoodSafety.gov, Cold Food Storage Chart (last reviewed September 19, 2023)",
+      "url": "https://www.foodsafety.gov/food-safety-charts/cold-food-storage-charts"
+    },
+    "article": ""
+  },
+  {
+    "id": "ham-cooked-slices",
+    "name": "Ham, cooked, store-wrapped, slices, half, or spiral cut",
+    "aliases": [
+      "sliced ham",
+      "spiral ham",
+      "cooked ham"
+    ],
+    "category": "meat",
+    "pantry": null,
+    "fridge": "3 to 5 days",
+    "freezer": "1 to 2 months",
+    "notes": "",
+    "source": {
+      "name": "FoodSafety.gov, Cold Food Storage Chart (last reviewed September 19, 2023)",
+      "url": "https://www.foodsafety.gov/food-safety-charts/cold-food-storage-charts"
+    },
+    "article": ""
+  },
+  {
+    "id": "ham-country-cooked",
+    "name": "Country ham, cooked",
+    "aliases": [],
+    "category": "meat",
+    "pantry": null,
+    "fridge": "1 week",
+    "freezer": "1 month",
+    "notes": "",
+    "source": {
+      "name": "FoodSafety.gov, Cold Food Storage Chart (last reviewed September 19, 2023)",
+      "url": "https://www.foodsafety.gov/food-safety-charts/cold-food-storage-charts"
+    },
+    "article": ""
+  },
+  {
+    "id": "ham-canned-keep-refrigerated-unopened",
+    "name": "Canned ham labeled “Keep Refrigerated”, unopened",
+    "aliases": [],
+    "category": "meat",
+    "pantry": null,
+    "fridge": "6 to 9 months",
+    "freezer": "Do not freeze",
+    "notes": "",
+    "source": {
+      "name": "FoodSafety.gov, Cold Food Storage Chart (last reviewed September 19, 2023)",
+      "url": "https://www.foodsafety.gov/food-safety-charts/cold-food-storage-charts"
+    },
+    "article": ""
+  },
+  {
+    "id": "ham-canned-shelf-stable-unopened",
+    "name": "Canned ham, shelf-stable, unopened",
+    "aliases": [],
+    "category": "meat",
+    "pantry": "2 years",
+    "fridge": null,
+    "freezer": null,
+    "notes": "The chart notes that an unopened, shelf-stable, canned ham can be stored at room temperature for 2 years.",
+    "source": {
+      "name": "FoodSafety.gov, Cold Food Storage Chart (last reviewed September 19, 2023)",
+      "url": "https://www.foodsafety.gov/food-safety-charts/cold-food-storage-charts"
+    },
+    "article": ""
+  },
+  {
+    "id": "ham-canned-shelf-stable-opened",
+    "name": "Canned ham, shelf-stable, opened",
+    "aliases": [],
+    "category": "meat",
+    "pantry": null,
+    "fridge": "3 to 4 days",
+    "freezer": "1 to 2 months",
+    "notes": "",
+    "source": {
+      "name": "FoodSafety.gov, Cold Food Storage Chart (last reviewed September 19, 2023)",
+      "url": "https://www.foodsafety.gov/food-safety-charts/cold-food-storage-charts"
+    },
+    "article": ""
+  },
+  {
+    "id": "prosciutto",
+    "name": "Prosciutto, Parma or Serrano ham, dry Italian or Spanish type, cut",
+    "aliases": [
+      "parma ham",
+      "serrano ham"
+    ],
+    "category": "meat",
+    "pantry": null,
+    "fridge": "2 to 3 months",
+    "freezer": "1 month",
+    "notes": "",
+    "source": {
+      "name": "FoodSafety.gov, Cold Food Storage Chart (last reviewed September 19, 2023)",
+      "url": "https://www.foodsafety.gov/food-safety-charts/cold-food-storage-charts"
+    },
+    "article": ""
+  },
+  {
+    "id": "chicken-turkey-whole",
+    "name": "Fresh chicken or turkey, whole",
+    "aliases": [
+      "whole chicken",
+      "whole turkey"
+    ],
+    "category": "poultry",
+    "pantry": null,
+    "fridge": "1 to 2 days",
+    "freezer": "1 year",
+    "notes": "",
+    "source": {
+      "name": "FoodSafety.gov, Cold Food Storage Chart (last reviewed September 19, 2023)",
+      "url": "https://www.foodsafety.gov/food-safety-charts/cold-food-storage-charts"
+    },
+    "article": ""
+  },
+  {
+    "id": "chicken-turkey-pieces",
+    "name": "Fresh chicken or turkey, pieces",
+    "aliases": [
+      "chicken breast",
+      "chicken thighs",
+      "chicken wings",
+      "chicken legs",
+      "turkey breast"
+    ],
+    "category": "poultry",
+    "pantry": null,
+    "fridge": "1 to 2 days",
+    "freezer": "9 months",
+    "notes": "",
+    "source": {
+      "name": "FoodSafety.gov, Cold Food Storage Chart (last reviewed September 19, 2023)",
+      "url": "https://www.foodsafety.gov/food-safety-charts/cold-food-storage-charts"
+    },
+    "article": ""
+  },
+  {
+    "id": "fatty-fish",
+    "name": "Fatty fish (bluefish, catfish, mackerel, mullet, salmon, tuna, etc.)",
+    "aliases": [
+      "salmon",
+      "tuna",
+      "mackerel",
+      "catfish"
+    ],
+    "category": "seafood",
+    "pantry": null,
+    "fridge": "1 to 3 days",
+    "freezer": "2 to 3 months",
+    "notes": "",
+    "source": {
+      "name": "FoodSafety.gov, Cold Food Storage Chart (last reviewed September 19, 2023)",
+      "url": "https://www.foodsafety.gov/food-safety-charts/cold-food-storage-charts"
+    },
+    "article": ""
+  },
+  {
+    "id": "lean-fish-cod-flounder",
+    "name": "Lean fish (cod, flounder, haddock, halibut, sole, etc.)",
+    "aliases": [
+      "cod",
+      "haddock",
+      "halibut",
+      "sole",
+      "flounder"
+    ],
+    "category": "seafood",
+    "pantry": null,
+    "fridge": "TODO-VERIFY",
+    "freezer": "6 to 8 months",
+    "notes": "The chart lists a freezer time for this fish, but its fridge time sits in a merged table cell, so it is not confirmed here.",
+    "source": {
+      "name": "FoodSafety.gov, Cold Food Storage Chart (last reviewed September 19, 2023)",
+      "url": "https://www.foodsafety.gov/food-safety-charts/cold-food-storage-charts"
+    },
+    "article": ""
+  },
+  {
+    "id": "lean-fish-pollock",
+    "name": "Lean fish (pollock, ocean perch, rockfish, sea trout)",
+    "aliases": [
+      "pollock",
+      "rockfish"
+    ],
+    "category": "seafood",
+    "pantry": null,
+    "fridge": "TODO-VERIFY",
+    "freezer": "4 to 8 months",
+    "notes": "The chart lists a freezer time for this fish, but its fridge time sits in a merged table cell, so it is not confirmed here.",
+    "source": {
+      "name": "FoodSafety.gov, Cold Food Storage Chart (last reviewed September 19, 2023)",
+      "url": "https://www.foodsafety.gov/food-safety-charts/cold-food-storage-charts"
+    },
+    "article": ""
+  },
+  {
+    "id": "fresh-crab-meat",
+    "name": "Fresh crab meat",
+    "aliases": [
+      "crab"
+    ],
+    "category": "seafood",
+    "pantry": null,
+    "fridge": "2 to 4 days",
+    "freezer": "2 to 4 months",
+    "notes": "",
+    "source": {
+      "name": "FoodSafety.gov, Cold Food Storage Chart (last reviewed September 19, 2023)",
+      "url": "https://www.foodsafety.gov/food-safety-charts/cold-food-storage-charts"
+    },
+    "article": ""
+  },
+  {
+    "id": "fresh-lobster",
+    "name": "Fresh lobster",
+    "aliases": [
+      "lobster"
+    ],
+    "category": "seafood",
+    "pantry": null,
+    "fridge": "2 to 4 days",
+    "freezer": "2 to 4 months",
+    "notes": "",
+    "source": {
+      "name": "FoodSafety.gov, Cold Food Storage Chart (last reviewed September 19, 2023)",
+      "url": "https://www.foodsafety.gov/food-safety-charts/cold-food-storage-charts"
+    },
+    "article": ""
+  },
+  {
+    "id": "live-crab-lobster",
+    "name": "Live crab and lobster",
+    "aliases": [],
+    "category": "seafood",
+    "pantry": null,
+    "fridge": "1 day",
+    "freezer": "Not recommended",
+    "notes": "",
+    "source": {
+      "name": "FoodSafety.gov, Cold Food Storage Chart (last reviewed September 19, 2023)",
+      "url": "https://www.foodsafety.gov/food-safety-charts/cold-food-storage-charts"
+    },
+    "article": ""
+  },
+  {
+    "id": "live-clams-mussels-oysters-scallops",
+    "name": "Live clams, mussels, oysters and scallops",
+    "aliases": [
+      "clams",
+      "mussels",
+      "oysters",
+      "scallops"
+    ],
+    "category": "seafood",
+    "pantry": null,
+    "fridge": "5 to 10 days",
+    "freezer": "Not recommended",
+    "notes": "",
+    "source": {
+      "name": "FoodSafety.gov, Cold Food Storage Chart (last reviewed September 19, 2023)",
+      "url": "https://www.foodsafety.gov/food-safety-charts/cold-food-storage-charts"
+    },
+    "article": ""
+  },
+  {
+    "id": "shrimp-crayfish",
+    "name": "Shrimp and crayfish",
+    "aliases": [
+      "shrimp",
+      "prawns",
+      "crawfish"
+    ],
+    "category": "seafood",
+    "pantry": null,
+    "fridge": "3 to 5 days",
+    "freezer": "6 to 18 months",
+    "notes": "",
+    "source": {
+      "name": "FoodSafety.gov, Cold Food Storage Chart (last reviewed September 19, 2023)",
+      "url": "https://www.foodsafety.gov/food-safety-charts/cold-food-storage-charts"
+    },
+    "article": ""
+  },
+  {
+    "id": "shucked-clams-mussels-oysters-scallops",
+    "name": "Shucked clams, mussels, oysters and scallops",
+    "aliases": [
+      "shucked oysters"
+    ],
+    "category": "seafood",
+    "pantry": null,
+    "fridge": "3 to 10 days",
+    "freezer": "3 to 4 months",
+    "notes": "",
+    "source": {
+      "name": "FoodSafety.gov, Cold Food Storage Chart (last reviewed September 19, 2023)",
+      "url": "https://www.foodsafety.gov/food-safety-charts/cold-food-storage-charts"
+    },
+    "article": ""
+  },
+  {
+    "id": "squid",
+    "name": "Squid",
+    "aliases": [
+      "calamari"
+    ],
+    "category": "seafood",
+    "pantry": null,
+    "fridge": "1 to 3 days",
+    "freezer": "6 to 18 months",
+    "notes": "",
+    "source": {
+      "name": "FoodSafety.gov, Cold Food Storage Chart (last reviewed September 19, 2023)",
+      "url": "https://www.foodsafety.gov/food-safety-charts/cold-food-storage-charts"
+    },
+    "article": ""
+  },
+  {
+    "id": "eggs-raw-in-shell",
+    "name": "Raw eggs in shell",
+    "aliases": [
+      "eggs",
+      "fresh eggs"
+    ],
+    "category": "eggs",
+    "pantry": null,
+    "fridge": "3 to 5 weeks",
+    "freezer": "Do not freeze in shell. Beat yolks and whites together, then freeze.",
+    "notes": "",
+    "source": {
+      "name": "FoodSafety.gov, Cold Food Storage Chart (last reviewed September 19, 2023)",
+      "url": "https://www.foodsafety.gov/food-safety-charts/cold-food-storage-charts"
+    },
+    "article": ""
+  },
+  {
+    "id": "eggs-raw-whites-yolks",
+    "name": "Raw egg whites and yolks",
+    "aliases": [
+      "egg whites",
+      "egg yolks"
+    ],
+    "category": "eggs",
+    "pantry": null,
+    "fridge": "2 to 4 days",
+    "freezer": "12 months",
+    "notes": "Yolks do not freeze well.",
+    "source": {
+      "name": "FoodSafety.gov, Cold Food Storage Chart (last reviewed September 19, 2023)",
+      "url": "https://www.foodsafety.gov/food-safety-charts/cold-food-storage-charts"
+    },
+    "article": ""
+  },
+  {
+    "id": "eggs-hard-cooked",
+    "name": "Hard-cooked eggs",
+    "aliases": [
+      "hard boiled eggs",
+      "boiled eggs"
+    ],
+    "category": "eggs",
+    "pantry": null,
+    "fridge": "1 week",
+    "freezer": "Do not freeze",
+    "notes": "",
+    "source": {
+      "name": "FoodSafety.gov, Cold Food Storage Chart (last reviewed September 19, 2023)",
+      "url": "https://www.foodsafety.gov/food-safety-charts/cold-food-storage-charts"
+    },
+    "article": "/blog/hard-boiled-eggs-how-long/"
+  },
+  {
+    "id": "egg-substitutes-liquid-unopened",
+    "name": "Egg substitutes, liquid, unopened",
+    "aliases": [],
+    "category": "eggs",
+    "pantry": null,
+    "fridge": "1 week",
+    "freezer": "Do not freeze",
+    "notes": "",
+    "source": {
+      "name": "FoodSafety.gov, Cold Food Storage Chart (last reviewed September 19, 2023)",
+      "url": "https://www.foodsafety.gov/food-safety-charts/cold-food-storage-charts"
+    },
+    "article": ""
+  },
+  {
+    "id": "egg-substitutes-liquid-opened",
+    "name": "Egg substitutes, liquid, opened",
+    "aliases": [],
+    "category": "eggs",
+    "pantry": null,
+    "fridge": "3 days",
+    "freezer": "Do not freeze",
+    "notes": "",
+    "source": {
+      "name": "FoodSafety.gov, Cold Food Storage Chart (last reviewed September 19, 2023)",
+      "url": "https://www.foodsafety.gov/food-safety-charts/cold-food-storage-charts"
+    },
+    "article": ""
+  },
+  {
+    "id": "egg-substitutes-frozen-unopened",
+    "name": "Egg substitutes, frozen, unopened",
+    "aliases": [],
+    "category": "eggs",
+    "pantry": null,
+    "fridge": "After thawing, 1 week or refer to “use by” date",
+    "freezer": "12 months",
+    "notes": "",
+    "source": {
+      "name": "FoodSafety.gov, Cold Food Storage Chart (last reviewed September 19, 2023)",
+      "url": "https://www.foodsafety.gov/food-safety-charts/cold-food-storage-charts"
+    },
+    "article": ""
+  },
+  {
+    "id": "egg-substitutes-frozen-opened",
+    "name": "Egg substitutes, frozen, opened",
+    "aliases": [],
+    "category": "eggs",
+    "pantry": null,
+    "fridge": "After thawing, 3 to 4 days or refer to “use by” date",
+    "freezer": "Do not freeze",
+    "notes": "",
+    "source": {
+      "name": "FoodSafety.gov, Cold Food Storage Chart (last reviewed September 19, 2023)",
+      "url": "https://www.foodsafety.gov/food-safety-charts/cold-food-storage-charts"
+    },
+    "article": ""
+  },
+  {
+    "id": "casseroles-with-eggs",
+    "name": "Casseroles with eggs",
+    "aliases": [],
+    "category": "eggs",
+    "pantry": null,
+    "fridge": "After baking, 3 to 4 days",
+    "freezer": "After baking, 2 to 3 months",
+    "notes": "",
+    "source": {
+      "name": "FoodSafety.gov, Cold Food Storage Chart (last reviewed September 19, 2023)",
+      "url": "https://www.foodsafety.gov/food-safety-charts/cold-food-storage-charts"
+    },
+    "article": ""
+  },
+  {
+    "id": "eggnog-commercial",
+    "name": "Eggnog, commercial",
+    "aliases": [],
+    "category": "eggs",
+    "pantry": null,
+    "fridge": "3 to 5 days",
+    "freezer": "6 months",
+    "notes": "",
+    "source": {
+      "name": "FoodSafety.gov, Cold Food Storage Chart (last reviewed September 19, 2023)",
+      "url": "https://www.foodsafety.gov/food-safety-charts/cold-food-storage-charts"
+    },
+    "article": ""
+  },
+  {
+    "id": "eggnog-homemade",
+    "name": "Eggnog, homemade",
+    "aliases": [],
+    "category": "eggs",
+    "pantry": null,
+    "fridge": "2 to 4 days",
+    "freezer": "Do not freeze",
+    "notes": "",
+    "source": {
+      "name": "FoodSafety.gov, Cold Food Storage Chart (last reviewed September 19, 2023)",
+      "url": "https://www.foodsafety.gov/food-safety-charts/cold-food-storage-charts"
+    },
+    "article": ""
+  },
+  {
+    "id": "pie-pumpkin-pecan",
+    "name": "Pies: pumpkin or pecan",
+    "aliases": [
+      "pumpkin pie",
+      "pecan pie"
+    ],
+    "category": "eggs",
+    "pantry": null,
+    "fridge": "After baking, 3 to 4 days",
+    "freezer": "After baking, 1 to 2 months",
+    "notes": "",
+    "source": {
+      "name": "FoodSafety.gov, Cold Food Storage Chart (last reviewed September 19, 2023)",
+      "url": "https://www.foodsafety.gov/food-safety-charts/cold-food-storage-charts"
+    },
+    "article": ""
+  },
+  {
+    "id": "pie-custard-chiffon",
+    "name": "Pies: custard and chiffon",
+    "aliases": [
+      "custard pie"
+    ],
+    "category": "eggs",
+    "pantry": null,
+    "fridge": "After baking, 3 to 4 days",
+    "freezer": "Do not freeze",
+    "notes": "",
+    "source": {
+      "name": "FoodSafety.gov, Cold Food Storage Chart (last reviewed September 19, 2023)",
+      "url": "https://www.foodsafety.gov/food-safety-charts/cold-food-storage-charts"
+    },
+    "article": ""
+  },
+  {
+    "id": "quiche",
+    "name": "Quiche with filling",
+    "aliases": [],
+    "category": "eggs",
+    "pantry": null,
+    "fridge": "After baking, 3 to 5 days",
+    "freezer": "After baking, 2 to 3 months",
+    "notes": "",
+    "source": {
+      "name": "FoodSafety.gov, Cold Food Storage Chart (last reviewed September 19, 2023)",
+      "url": "https://www.foodsafety.gov/food-safety-charts/cold-food-storage-charts"
+    },
+    "article": ""
+  },
+  {
+    "id": "soups-and-stews",
+    "name": "Soups and stews, vegetable or meat added",
+    "aliases": [
+      "soup",
+      "stew",
+      "chili"
+    ],
+    "category": "prepared",
+    "pantry": null,
+    "fridge": "3 to 4 days",
+    "freezer": "2 to 3 months",
+    "notes": "",
+    "source": {
+      "name": "FoodSafety.gov, Cold Food Storage Chart (last reviewed September 19, 2023)",
+      "url": "https://www.foodsafety.gov/food-safety-charts/cold-food-storage-charts"
+    },
+    "article": ""
+  },
+  {
+    "id": "leftovers-cooked-meat-poultry",
+    "name": "Leftovers: cooked meat or poultry",
+    "aliases": [
+      "leftovers",
+      "cooked chicken",
+      "cooked beef",
+      "cooked pork",
+      "roast chicken"
+    ],
+    "category": "prepared",
+    "pantry": null,
+    "fridge": "3 to 4 days",
+    "freezer": "2 to 6 months",
+    "notes": "",
+    "source": {
+      "name": "FoodSafety.gov, Cold Food Storage Chart (last reviewed September 19, 2023)",
+      "url": "https://www.foodsafety.gov/food-safety-charts/cold-food-storage-charts"
+    },
+    "article": "/blog/how-long-leftovers-last/"
+  },
+  {
+    "id": "chicken-nuggets-patties",
+    "name": "Chicken nuggets or patties",
+    "aliases": [
+      "chicken nuggets",
+      "chicken patties"
+    ],
+    "category": "prepared",
+    "pantry": null,
+    "fridge": "3 to 4 days",
+    "freezer": "1 to 3 months",
+    "notes": "",
+    "source": {
+      "name": "FoodSafety.gov, Cold Food Storage Chart (last reviewed September 19, 2023)",
+      "url": "https://www.foodsafety.gov/food-safety-charts/cold-food-storage-charts"
+    },
+    "article": ""
+  },
+  {
+    "id": "pizza",
+    "name": "Pizza",
+    "aliases": [
+      "leftover pizza"
+    ],
+    "category": "prepared",
+    "pantry": null,
+    "fridge": "3 to 4 days",
+    "freezer": "1 to 2 months",
+    "notes": "",
+    "source": {
+      "name": "FoodSafety.gov, Cold Food Storage Chart (last reviewed September 19, 2023)",
+      "url": "https://www.foodsafety.gov/food-safety-charts/cold-food-storage-charts"
+    },
+    "article": ""
+  },
+  {
+    "id": "canned-high-acid",
+    "name": "Canned foods, high-acid (tomatoes and fruits)",
+    "aliases": [
+      "canned tomatoes",
+      "canned fruit",
+      "tinned tomatoes"
+    ],
+    "category": "canned",
+    "pantry": "12 to 18 months",
+    "fridge": null,
+    "freezer": null,
+    "notes": "USDA says high-acid canned foods keep their best quality for this long. Discard cans that are dented, rusted or swollen.",
+    "source": {
+      "name": "USDA FSIS, Food Product Dating",
+      "url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/food-product-dating"
+    },
+    "article": ""
+  },
+  {
+    "id": "canned-low-acid",
+    "name": "Canned foods, low-acid (meats and vegetables)",
+    "aliases": [
+      "canned vegetables",
+      "canned meat",
+      "canned beans",
+      "tinned vegetables"
+    ],
+    "category": "canned",
+    "pantry": "2 to 5 years",
+    "fridge": null,
+    "freezer": null,
+    "notes": "USDA says low-acid canned foods keep their best quality for this long. Discard cans that are dented, rusted or swollen.",
+    "source": {
+      "name": "USDA FSIS, Food Product Dating",
+      "url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/food-product-dating"
+    },
+    "article": ""
+  }
+]
