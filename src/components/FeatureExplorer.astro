@@ -1,0 +1,218 @@
+---
+import Phone from './Phone.astro';
+import addFood from '../assets/screenshots/add-food.png';
+import home from '../assets/screenshots/home.png';
+import reminder from '../assets/screenshots/reminder.png';
+import itemDetail from '../assets/screenshots/item-detail.png';
+import stats from '../assets/screenshots/stats.png';
+import addFoodDark from '../assets/screenshots/dark/add-food.png';
+import homeDark from '../assets/screenshots/dark/home.png';
+import reminderDark from '../assets/screenshots/dark/reminder.png';
+import itemDetailDark from '../assets/screenshots/dark/item-detail.png';
+import statsDark from '../assets/screenshots/dark/stats.png';
+
+const steps = [
+  {
+    title: 'Add food in seconds',
+    text: 'Scan a barcode, pick from your leftovers, or just type. TossLess fills in how long it keeps.',
+    light: addFood,
+    dark: addFoodDark,
+    alt: 'The TossLess add-food sheet, with Scan, Leftovers and Type options and chicken results from a search.',
+  },
+  {
+    title: 'See what to eat first',
+    text: 'Your home screen sorts everything by when it needs eating: today, tomorrow, then the next few days.',
+    light: home,
+    dark: homeDark,
+    alt: 'The TossLess home screen listing foods to use soon, with chicken breast due today and baby spinach due tomorrow.',
+  },
+  {
+    title: 'Get one reminder a day',
+    text: 'One notification tells you what to use tonight. No nagging, no pile of alerts.',
+    light: reminder,
+    dark: reminderDark,
+    alt: 'A lock screen notification from TossLess reading: 3 things to use tonight.',
+  },
+  {
+    title: 'Know every item',
+    text: 'Open any item to see the days left, then mark it eaten, freeze it, or tossed.',
+    light: itemDetail,
+    dark: itemDetailDark,
+    alt: 'The TossLess detail screen for opened Greek yogurt, showing 2 days left and Eaten, Freeze it, Tossed buttons.',
+  },
+  {
+    title: 'See what you save',
+    text: 'Stats show how much food you ate before it expired, and how your waste is trending over time.',
+    light: stats,
+    dark: statsDark,
+    alt: 'The TossLess stats screen showing money saved this month, a streak without tossing food, and eaten versus tossed.',
+  },
+];
+---
+
+<div class="explorer">
+  {steps.map((s, i) => <input type="radio" name="step" id={`step-${i + 1}`} checked={i === 0} aria-label={s.title} />)}
+
+  <div class="tabs" role="presentation">
+    {
+      steps.map((s, i) => (
+        <label for={`step-${i + 1}`}>
+          <span class="num">{i + 1}</span>
+          <span class="body">
+            <strong>{s.title}</strong>
+            <span class="text">{s.text}</span>
+          </span>
+        </label>
+      ))
+    }
+  </div>
+
+  <div class="stage">
+    <Phone screens={steps} />
+  </div>
+</div>
+
+<style>
+  .explorer {
+    position: relative;
+    display: grid;
+    gap: 1.5rem;
+    grid-template-areas:
+      'stage'
+      'tabs';
+    justify-items: center;
+  }
+  input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+  .stage {
+    grid-area: stage;
+    --phone-w: 12.5rem;
+  }
+  .tabs {
+    grid-area: tabs;
+    display: grid;
+    gap: 0.5rem;
+    width: 100%;
+  }
+  label {
+    display: flex;
+    gap: 0.9rem;
+    align-items: flex-start;
+    padding: 0.8rem 1rem;
+    border-radius: var(--radius);
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: background 0.25s, border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+  }
+  label:hover {
+    background: var(--card);
+    border-color: var(--border);
+  }
+  .num {
+    flex: none;
+    width: 2rem;
+    height: 2rem;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: var(--card-subtle);
+    color: var(--text-2);
+    font-weight: 700;
+    font-size: 0.95rem;
+    transition: background 0.25s, color 0.25s;
+  }
+  .body {
+    display: grid;
+    gap: 0.2rem;
+  }
+  strong {
+    line-height: 2rem;
+  }
+  .text {
+    display: none;
+    color: var(--text-2);
+    font-size: 1rem;
+  }
+
+  /* Active step: highlight its tab and show its screen. */
+  .explorer :global(.shot) {
+    opacity: 0;
+    transform: scale(1.03);
+  }
+  input:nth-of-type(1):checked ~ .stage :global(.shot:nth-child(1)),
+  input:nth-of-type(2):checked ~ .stage :global(.shot:nth-child(2)),
+  input:nth-of-type(3):checked ~ .stage :global(.shot:nth-child(3)),
+  input:nth-of-type(4):checked ~ .stage :global(.shot:nth-child(4)),
+  input:nth-of-type(5):checked ~ .stage :global(.shot:nth-child(5)) {
+    opacity: 1;
+    transform: none;
+  }
+  input:nth-of-type(1):checked ~ .tabs label:nth-child(1),
+  input:nth-of-type(2):checked ~ .tabs label:nth-child(2),
+  input:nth-of-type(3):checked ~ .tabs label:nth-child(3),
+  input:nth-of-type(4):checked ~ .tabs label:nth-child(4),
+  input:nth-of-type(5):checked ~ .tabs label:nth-child(5) {
+    background: var(--card);
+    border-color: var(--border);
+    box-shadow: 0 10px 30px -18px rgb(30 60 40 / 0.5);
+  }
+  input:nth-of-type(1):checked ~ .tabs label:nth-child(1) .num,
+  input:nth-of-type(2):checked ~ .tabs label:nth-child(2) .num,
+  input:nth-of-type(3):checked ~ .tabs label:nth-child(3) .num,
+  input:nth-of-type(4):checked ~ .tabs label:nth-child(4) .num,
+  input:nth-of-type(5):checked ~ .tabs label:nth-child(5) .num {
+    background: var(--primary);
+    color: var(--on-primary);
+  }
+  input:nth-of-type(1):checked ~ .tabs label:nth-child(1) .text,
+  input:nth-of-type(2):checked ~ .tabs label:nth-child(2) .text,
+  input:nth-of-type(3):checked ~ .tabs label:nth-child(3) .text,
+  input:nth-of-type(4):checked ~ .tabs label:nth-child(4) .text,
+  input:nth-of-type(5):checked ~ .tabs label:nth-child(5) .text {
+    display: block;
+  }
+  input:nth-of-type(1):focus-visible ~ .tabs label:nth-child(1),
+  input:nth-of-type(2):focus-visible ~ .tabs label:nth-child(2),
+  input:nth-of-type(3):focus-visible ~ .tabs label:nth-child(3),
+  input:nth-of-type(4):focus-visible ~ .tabs label:nth-child(4),
+  input:nth-of-type(5):focus-visible ~ .tabs label:nth-child(5) {
+    outline: 3px solid var(--primary-text);
+    outline-offset: 2px;
+  }
+
+  @media (min-width: 52rem) {
+    .explorer {
+      grid-template-columns: 1fr auto;
+      grid-template-areas: 'tabs stage';
+      gap: 4rem;
+      align-items: center;
+    }
+    .stage {
+      --phone-w: 17rem;
+    }
+    .tabs {
+      gap: 0.75rem;
+    }
+    label {
+      padding: 1rem 1.25rem;
+    }
+    .text {
+      display: block;
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.35s ease, opacity 0.35s ease;
+    }
+    input:nth-of-type(1):checked ~ .tabs label:nth-child(1) .text,
+    input:nth-of-type(2):checked ~ .tabs label:nth-child(2) .text,
+    input:nth-of-type(3):checked ~ .tabs label:nth-child(3) .text,
+    input:nth-of-type(4):checked ~ .tabs label:nth-child(4) .text,
+    input:nth-of-type(5):checked ~ .tabs label:nth-child(5) .text {
+      max-height: 8rem;
+      opacity: 1;
+    }
+  }
+</style>

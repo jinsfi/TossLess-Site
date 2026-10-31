@@ -1,67 +1,260 @@
 ---
-import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import AppCta from '../components/AppCta.astro';
+import Phone from '../components/Phone.astro';
+import FeatureExplorer from '../components/FeatureExplorer.astro';
 import { site } from '../config/site';
 import home from '../assets/screenshots/home.png';
-import addFood from '../assets/screenshots/add-food.png';
-import itemDetail from '../assets/screenshots/item-detail.png';
-import stats from '../assets/screenshots/stats.png';
+import homeDark from '../assets/screenshots/dark/home.png';
 
-const shots = [
-  { src: home, alt: 'TossLess home screen listing foods to use soon, with chicken breast due today and baby spinach due tomorrow.' },
-  { src: addFood, alt: 'TossLess add-food sheet searching for "chick", with chicken results and a one-tap add button.' },
-  { src: itemDetail, alt: 'TossLess detail screen for opened Greek yogurt showing 2 days left, with Eaten, Freeze it and Tossed buttons.' },
-  { src: stats, alt: 'TossLess stats screen showing money saved this month, a streak without tossing food, and eaten versus tossed.' },
+const hero = [
+  {
+    light: home,
+    dark: homeDark,
+    alt: 'The TossLess home screen listing foods to use soon, with chicken breast due today and baby spinach due tomorrow.',
+  },
+];
+
+const benefits = [
+  { title: 'Seconds, not minutes', text: 'Adding food takes a few taps, so you actually keep it up. No spreadsheets, no setup marathon.' },
+  { title: 'One nudge, not ten', text: 'A single reminder a day, timed when you choose. It tells you what to eat, then gets out of the way.' },
+  { title: 'See the difference', text: 'Watch what you save and what still gets tossed, so the habit pays off in plain numbers.' },
 ];
 ---
 
 <BaseLayout title={site.tagline} description={site.tagline} home>
-  <div class="wrap page">
-    <h1>Know what to eat first.</h1>
-    <p class="lede">TossLess tells you what in your kitchen to use next, with one reminder a day, so less food and money ends up in the bin.</p>
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="copy">
+        <p class="eyebrow">Coming soon to iPhone</p>
+        <h1>Know what to <span class="mark">eat first.</span></h1>
+        <p class="lede">Add food in seconds, get one reminder a day, and stop throwing food and money away.</p>
+        <div class="actions">
+          <a class="btn" href="#get-the-app">Get notified at launch</a>
+          <a class="btn ghost" href="#how-it-works">See how it works</a>
+        </div>
+      </div>
+      <div class="device">
+        <Phone screens={hero} eager />
+      </div>
+    </div>
+  </section>
 
-    <ul class="shots">
+  <section class="band" id="how-it-works">
+    <div class="wrap">
+      <div class="head reveal">
+        <h2>Everything you need, nothing you don't</h2>
+        <p>Pick a step to see it in the app.</p>
+      </div>
+      <FeatureExplorer />
+    </div>
+  </section>
+
+  <section class="wrap benefits">
+    <div class="head reveal">
+      <h2>Built to fit into your day</h2>
+    </div>
+    <ul>
       {
-        shots.map((s) => (
-          <li>
-            <Image src={s.src} alt={s.alt} widths={[240, 360, 480]} sizes="(min-width: 48rem) 15rem, 45vw" />
+        benefits.map((b) => (
+          <li class="card reveal">
+            <h3>{b.title}</h3>
+            <p>{b.text}</p>
           </li>
         ))
       }
     </ul>
+  </section>
 
-    <AppCta />
+  <section class="wrap" id="get-the-app">
+    <div class="reveal">
+      <AppCta />
+    </div>
+  </section>
 
+  <section class="wrap latest">
     <h2>Latest articles</h2>
     <p class="muted">Articles on food storage and food waste are on the way.</p>
-  </div>
+  </section>
 </BaseLayout>
 
 <style>
-  .shots {
-    list-style: none;
-    padding: 0;
-    margin: 2rem 0 0;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.75rem;
+  .hero {
+    position: relative;
+    overflow: hidden;
+    padding-block: 2.5rem 3rem;
   }
-  @media (min-width: 48rem) {
-    .shots {
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1rem;
+  .hero::before,
+  .hero::after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    border-radius: 50%;
+    filter: blur(70px);
+    opacity: 0.7;
+  }
+  .hero::before {
+    width: 26rem;
+    height: 26rem;
+    background: var(--primary-tint);
+    top: -8rem;
+    right: -6rem;
+  }
+  .hero::after {
+    width: 18rem;
+    height: 18rem;
+    background: color-mix(in srgb, var(--primary) 18%, transparent);
+    bottom: -6rem;
+    left: -5rem;
+  }
+  .hero-grid {
+    display: grid;
+    gap: 2.5rem;
+    justify-items: center;
+    text-align: center;
+  }
+  .eyebrow {
+    display: inline-block;
+    margin: 0 0 1rem;
+    padding: 0.3rem 0.9rem;
+    border-radius: 999px;
+    background: var(--primary-tint);
+    color: var(--primary-text);
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+  h1 {
+    font-size: clamp(2.5rem, 9vw, 4.5rem);
+    letter-spacing: -0.03em;
+    line-height: 1.04;
+    margin-bottom: 1rem;
+  }
+  .mark {
+    background: linear-gradient(120deg, var(--primary), #4caf77);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .lede {
+    margin-inline: auto;
+  }
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    justify-content: center;
+    margin-top: 1.75rem;
+  }
+  .btn {
+    transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+  }
+  .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px -12px rgb(46 125 79 / 0.7);
+  }
+  .btn.ghost {
+    background: transparent;
+    color: var(--text);
+    box-shadow: inset 0 0 0 1.5px var(--border);
+  }
+  .btn.ghost:hover {
+    background: var(--card);
+    box-shadow: inset 0 0 0 1.5px var(--primary);
+  }
+  .device {
+    --phone-w: 15rem;
+    animation: float 6s ease-in-out infinite;
+    transition: transform 0.4s ease;
+  }
+  .device:hover {
+    transform: perspective(900px) rotateY(-8deg) rotateX(3deg);
+  }
+  @keyframes float {
+    50% {
+      translate: 0 -0.6rem;
     }
   }
-  .shots :global(img) {
-    width: 100%;
-    aspect-ratio: 9 / 19.5;
-    object-fit: cover;
-    object-position: top;
-    border-radius: var(--radius);
-    border: 1px solid var(--border);
+
+  .band {
+    background: color-mix(in srgb, var(--card) 70%, transparent);
+    border-block: 1px solid var(--border);
+    padding-block: 3.5rem;
+  }
+  .head {
+    text-align: center;
+    margin-bottom: 2.5rem;
+  }
+  .head h2 {
+    margin: 0 0 0.5rem;
+    font-size: clamp(1.7rem, 5vw, 2.5rem);
+    letter-spacing: -0.02em;
+  }
+  .head p {
+    margin: 0;
+    color: var(--text-2);
+  }
+
+  .benefits {
+    padding-block: 4rem 1rem;
+  }
+  .benefits ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  }
+  .benefits .card {
+    transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+  }
+  .benefits .card:hover {
+    transform: translateY(-4px);
+    border-color: var(--primary);
+    box-shadow: 0 18px 40px -24px rgb(30 60 40 / 0.5);
+  }
+  h3 {
+    margin: 0 0 0.4rem;
+    font-size: 1.2rem;
+  }
+  .benefits p {
+    margin: 0;
+    color: var(--text-2);
+  }
+
+  .latest {
+    padding-bottom: 3rem;
   }
   .muted {
     color: var(--text-2);
+  }
+
+  @media (min-width: 52rem) {
+    .hero {
+      padding-block: 4.5rem 5rem;
+    }
+    .hero-grid {
+      grid-template-columns: 1.1fr 0.9fr;
+      text-align: left;
+      justify-items: start;
+    }
+    .lede,
+    .actions {
+      margin-inline: 0;
+      justify-content: flex-start;
+    }
+    .device {
+      --phone-w: 18rem;
+      justify-self: center;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .device {
+      animation: none;
+    }
+    .device:hover {
+      transform: none;
+    }
   }
 </style>
