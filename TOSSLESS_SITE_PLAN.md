@@ -358,8 +358,8 @@ Week 1 starts Monday 2 November 2026. Two pieces a week, in this order. Swap any
 
 | # | Week | Dates | Topic | Type | Suggested slug | Status |
 | --- | --- | --- | --- | --- | --- | --- |
-| 1 | 2 | Nov 9–15 | Best apps to track food expiration dates | app-intent | best-food-expiration-tracker-apps | Not started |
-| 2 | 2 | Nov 9–15 | Use-by vs best-before: what's the difference? | date-labels | use-by-vs-best-before | Not started |
+| 1 | 2 | Nov 9–15 | Best apps to track food expiration dates | app-intent | best-food-expiration-tracker-apps | Draft written, needs owner review |
+| 2 | 2 | Nov 9–15 | Use-by vs best-before: what's the difference? | date-labels | use-by-vs-best-before | Draft written, needs owner review |
 | 3 | 3 | Nov 16–22 | How to keep track of food expiration dates at home | app-intent | track-food-expiration-dates-at-home | Not started |
 | 4 | 3 | Nov 16–22 | Holiday leftovers: how long they keep in the fridge | seasonal | holiday-leftovers-how-long | Not started |
 | 5 | 4 | Nov 23–29 | Fridge and freezer storage chart (free printable PDF) | resource | fridge-freezer-storage-chart | Not started |
