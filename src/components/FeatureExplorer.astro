@@ -239,7 +239,6 @@ const steps = [
 
       .tab,
       .stage :global(.shot) {
-        animation-timing-function: linear;
         animation-fill-mode: both;
       }
 
@@ -247,9 +246,10 @@ const steps = [
       .stage :global(.shot) {
         display: block;
       }
-      .stage :global(.shot:nth-child(2)) { animation-name: shot-in; animation-timeline: --s2; }
-      .stage :global(.shot:nth-child(3)) { animation-name: shot-in; animation-timeline: --s3; }
-      .stage :global(.shot:nth-child(4)) { animation-name: shot-in; animation-timeline: --s4; }
+      .stage :global(.shot:nth-child(1)) { animation-name: shot-out; animation-timeline: --s2; }
+      .stage :global(.shot:nth-child(2)) { animation-name: shot-in, shot-out; animation-timeline: --s2, --s3; }
+      .stage :global(.shot:nth-child(3)) { animation-name: shot-in, shot-out; animation-timeline: --s3, --s4; }
+      .stage :global(.shot:nth-child(4)) { animation-name: shot-in, shot-out; animation-timeline: --s4, --s5; }
       .stage :global(.shot:nth-child(5)) { animation-name: shot-in; animation-timeline: --s5; }
 
       .tab:nth-child(1) { animation-name: tab-first; animation-timeline: --s1; }
@@ -292,20 +292,22 @@ const steps = [
 
   @keyframes tab-first {
     0%,
-    60% {
+    50% {
       --on: 1;
     }
     100% {
       --on: 0;
+      animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     }
   }
   @keyframes tab-mid {
     0% {
       --on: 0;
+      animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     }
-    40%,
-    60% {
+    50% {
       --on: 1;
+      animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     }
     100% {
       --on: 0;
@@ -314,21 +316,36 @@ const steps = [
   @keyframes tab-last {
     0% {
       --on: 0;
+      animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     }
-    40%,
+    50%,
     100% {
       --on: 1;
     }
   }
+  /* The next screen rises into place while the current one dims behind it. */
   @keyframes shot-in {
     0% {
       opacity: 0;
-      transform: scale(1.05);
+      translate: 0 1.75rem;
+      scale: 1.04;
+      animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
     }
-    40%,
+    50%,
     100% {
       opacity: 1;
-      transform: none;
+      translate: 0 0;
+      scale: 1;
+    }
+  }
+  @keyframes shot-out {
+    0% {
+      filter: brightness(1);
+      animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    50%,
+    100% {
+      filter: brightness(0.78);
     }
   }
 </style>

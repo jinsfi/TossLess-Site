@@ -165,6 +165,7 @@ h2 {
   html.snap {
     scroll-snap-type: y mandatory;
     scroll-padding-top: var(--header);
+    scroll-behavior: smooth;
   }
   html.snap .snap-section {
     scroll-snap-align: start;
