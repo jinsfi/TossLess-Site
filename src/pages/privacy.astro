@@ -1,30 +1,162 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { site } from '../config/site';
+
+const mail = `mailto:${site.contactEmail}`;
 ---
 
-<BaseLayout title="Privacy policy" description="How the TossLess website handles your data, including analytics and, once it opens, the email waitlist.">
+<BaseLayout
+  title="Privacy policy"
+  description="How the TossLess app and website handle your data: what stays on your iPhone, barcode lookups, purchases, analytics and the email waitlist."
+>
   <div class="wrap page prose">
-    <h1>Privacy policy</h1>
-    <!-- OWNER: add the app's own privacy policy here, then have the full text reviewed. -->
-    <p>This page covers the TossLess website. The privacy policy for the app itself will be added here.</p>
+    <h1>Privacy Policy</h1>
+    <p class="meta">Last updated: 31 October 2026</p>
 
-    <h2 id="email-signup">Email signup</h2>
-    <!-- OWNER: review this section, and add your legal basis and retention period if your local law requires them. -->
+    <p class="summary">
+      <strong>In short:</strong> this page covers two things, the TossLess app and the tosslessapp.com website. The app has no account and keeps
+      your food list on your iPhone. The only things that leave your phone are a barcode number when you scan one, and purchase details when you
+      buy TossLess Pro. The website counts visits and runs an optional email waitlist. We never sell data.
+    </p>
+
+    <h2>Who we are</h2>
+    {/* OWNER: the original text named the person who makes the app ("[YOUR NAME]"). The site keeps the owner anonymous, so this says "the TossLess team". Replace it with your name or company if the law or Apple requires an identifiable publisher. */}
+    <p>
+      TossLess is an iPhone app made by the TossLess team (“we”, “us”). If you have a question about this policy or your data, write to
+      <a href={mail}>{site.contactEmail}</a>.
+    </p>
+
+    <h2 id="app">The TossLess app</h2>
+    <p>This part covers the iPhone app.</p>
+
+    <h3>What stays on your iPhone</h3>
+    <p>
+      Everything you enter in TossLess is stored only on your device. That includes the food you add, its dates, storage place and quantity, your
+      shopping list, what you marked as eaten or tossed, and your settings, such as reminder time, appearance and currency. We can't see this
+      information and we don't receive a copy. Money-saved figures in Stats are estimates calculated on your device.
+    </p>
+    <p>TossLess does not sync between devices. If you delete the app, this information is deleted with it.</p>
+
+    <h3>Barcode lookups (Open Food Facts)</h3>
+    <p>
+      When you scan a barcode, the app sends only the barcode number to <a href="https://world.openfoodfacts.org">Open Food Facts</a>, a free public
+      food database, to look up the product name, size and category. No other information about you or your list is sent. Like any website, Open
+      Food Facts receives your device's IP address when it answers the request. Their
+      <a href="https://world.openfoodfacts.org/privacy">privacy policy</a> applies to that. The result is saved on your iPhone so the same product is
+      instant next time.
+    </p>
+
+    <h3>Camera</h3>
+    <p>
+      The camera is used only to read barcodes while the scanner is open. No photos or video are saved or sent anywhere. You can turn camera access
+      off at any time in iOS Settings › TossLess.
+    </p>
+
+    <h3>Reminders</h3>
+    <p>
+      Daily reminders are local notifications created on your iPhone. They are not sent from a server, and their content, such as “3 things to use
+      tonight”, is put together on your device. You can turn them off in the app or in iOS Settings.
+    </p>
+
+    <h3>Purchases (TossLess Pro)</h3>
+    <p>Payments are handled by Apple through the App Store. We never see your name, Apple ID, email address or payment details.</p>
+    <p>
+      To know whether your Pro subscription or purchase is active, and to let you restore it, TossLess uses
+      <a href="https://www.revenuecat.com">RevenueCat</a>, a service that processes purchases for us. RevenueCat receives:
+    </p>
+    <ul>
+      <li>A random, anonymous ID created by the app. It is not linked to your name or Apple ID.</li>
+      <li>
+        Details of your App Store purchases, such as the product, price, currency, dates, trial and renewal status, and the App Store receipt.
+      </li>
+      <li>Basic technical information, such as app version, iOS version, device type, country or storefront, language and IP address.</li>
+    </ul>
+    <p>
+      This is used only to provide and check your purchases. It is not used for advertising. See
+      <a href="https://www.revenuecat.com/privacy">RevenueCat's privacy policy</a> and
+      <a href="https://www.apple.com/legal/privacy/">Apple's privacy policy</a>.
+    </p>
+
+    <h3>What the app doesn't do</h3>
+    <ul>
+      <li>No account, sign-up or login.</li>
+      <li>No analytics, crash-tracking or advertising tools in the app.</li>
+      <li>No tracking across other apps or websites, and no advertising identifier (IDFA).</li>
+      <li>No selling or sharing of personal data.</li>
+    </ul>
+
+    <h2 id="website">This website</h2>
+    <p>This part covers tosslessapp.com, which is separate from the app.</p>
+
+    <h3>Analytics</h3>
+    <p>
+      We use Cloudflare Web Analytics to count visits and see which pages are read. It does not use cookies and does not track you across sites.
+    </p>
+
+    <h3 id="email-signup">Email signup</h3>
+    {/* OWNER: review this section, and add your legal basis and retention period if your local law requires them. */}
     <ul>
       <li><strong>What we collect:</strong> the email address you enter in the waitlist form.</li>
       <li><strong>Why:</strong> to email you once when TossLess launches, then occasional food-saving tips.</li>
-      <li><strong>Who processes it:</strong> we use Kit (kit.com) to store the list and send the emails. Your address is sent to Kit when you submit the form.</li>
-      <li><strong>Unsubscribing:</strong> every email has an unsubscribe link. You can also write to <a href={`mailto:${site.contactEmail}`}>{site.contactEmail}</a> and we will remove you.</li>
+      <li>
+        <strong>Who processes it:</strong> we use Kit (kit.com) to store the list and send the emails. Your address is sent to Kit when you submit the
+        form.
+      </li>
+      <li>
+        <strong>Unsubscribing:</strong> every email has an unsubscribe link. You can also write to <a href={mail}>{site.contactEmail}</a> and we will
+        remove you.
+      </li>
     </ul>
 
-    <h2>Analytics</h2>
+    <h2>Why we process this information</h2>
     <p>
-      We use Cloudflare Web Analytics to count visits and see which pages are read. It does not use cookies and does not track
-      you across sites.
+      Where data protection laws such as the GDPR apply, we process purchase information to provide what you bought (performance of a contract), and
+      barcode lookups because you asked for them by scanning (our legitimate interest in providing the feature). We use your email address for the
+      waitlist because you asked to join it (consent), and you can withdraw that at any time.
     </p>
 
-    <h2>Contact</h2>
-    <p>Questions about privacy: <a href={`mailto:${site.contactEmail}`}>{site.contactEmail}</a>.</p>
+    <h2>Keeping and deleting your information</h2>
+    <p>
+      Information on your iPhone stays until you delete it in the app or delete the app. RevenueCat keeps purchase records for as long as needed to
+      provide your purchases and to meet legal and tax obligations. To ask for the purchase data linked to your anonymous ID to be deleted, write to us
+      and we'll handle it with RevenueCat. Open Food Facts does not receive anything that identifies you beyond the request itself. Waitlist emails
+      are kept until you unsubscribe.
+    </p>
+
+    <h2>Your rights</h2>
+    <p>
+      Depending on where you live, you may have the right to access, correct or delete personal data about you, to object to or limit its use, and to
+      complain to your data protection authority. Because almost everything in the app stays on your device, you can see and delete most of it
+      yourself there. For anything else, contact us at <a href={mail}>{site.contactEmail}</a>.
+    </p>
+
+    <h2>Children</h2>
+    <p>TossLess is not aimed at children under 13, and we don't knowingly collect personal information from children.</p>
+
+    <h2>Changes to this policy</h2>
+    <p>
+      If we change how TossLess handles information, we'll update this page and the date at the top. Important changes will also be mentioned in the
+      app's release notes.
+    </p>
   </div>
 </BaseLayout>
+
+<style>
+  .meta {
+    color: var(--text-2);
+    margin: 0 0 1.5rem;
+  }
+  .summary {
+    background: var(--primary-tint);
+    border-radius: 14px;
+    padding: 1rem;
+  }
+  h2 {
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+  }
+  h3 {
+    font-size: 1.15rem;
+    margin: 1.5rem 0 0.25rem;
+  }
+</style>

@@ -1,0 +1,113 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../config/site';
+
+const mail = `mailto:${site.contactEmail}`;
+---
+
+<BaseLayout
+  title="Support"
+  description="Help with TossLess: how food dates work, daily reminders, TossLess Pro purchases, subscriptions, refunds and where your data is stored."
+>
+  <div class="wrap page prose">
+    <h1>Support</h1>
+    <p class="summary">
+      Need help? Most answers are below. If yours isn't, email <a href={mail}>{site.contactEmail}</a> and include your iPhone model and iOS version.
+      We usually reply within a few days.
+    </p>
+
+    <h2>Using TossLess</h2>
+
+    <h3>How does TossLess know when food goes bad?</h3>
+    <p>
+      When you add a food, TossLess suggests a use-by date based on how long that food usually keeps in the fridge, freezer or pantry. The guidance
+      comes from the USDA FoodKeeper. Cooked leftovers are given 3 days. If the package has a printed date, tap “Pick date” and enter it: your date
+      always wins over the estimate.
+    </p>
+
+    <h3>Are the dates and food guides safe to rely on?</h3>
+    <p>
+      They are estimates to help you plan, not a guarantee. Food can spoil sooner if it was stored warm, opened, or handled a lot. Always check the
+      look, smell and texture, and follow the date on the package. When in doubt, throw it out.
+    </p>
+
+    <h3>How do I mark food as eaten, frozen or tossed?</h3>
+    <p>
+      On the Home screen, swipe a food to the left, or tap it to open its details. “Freeze it” moves it to the freezer and gives it a new date.
+    </p>
+
+    <h3>A barcode wasn't found</h3>
+    <p>
+      Product names come from Open Food Facts, a free database that doesn't know every product. If a barcode isn't found, type the name and pick a
+      category, and we'll estimate the date. Barcode lookups also need an internet connection. Without one, you can still add the food by typing it.
+    </p>
+
+    <h2>Reminders</h2>
+
+    <h3>I'm not getting the daily reminder</h3>
+    <ul>
+      <li>Check that notifications are on: iOS Settings › TossLess › Notifications.</li>
+      <li>In TossLess, go to Settings › Daily reminder and check the time.</li>
+      <li>
+        By default, the reminder is skipped on days when nothing is expiring. You can change this with “Skip reminder when nothing is expiring”.
+      </li>
+      <li>Open TossLess once in a while. Reminders are planned a week ahead and refreshed each time you open the app.</li>
+      <li>Focus modes and Do Not Disturb can hide notifications.</li>
+    </ul>
+
+    <h2>TossLess Pro and purchases</h2>
+
+    <h3>What does Pro include?</h3>
+    <p>
+      Unlimited items (the free plan holds 20 at a time), Stats with money saved and what you toss most, and recipes from what's expiring.
+    </p>
+
+    <h3>I bought Pro but it isn't active</h3>
+    <p>
+      Open TossLess › Settings › Restore purchases while signed in with the same Apple ID you used to buy it. Make sure you have an internet
+      connection.
+    </p>
+
+    <h3>How do I cancel my subscription?</h3>
+    <p>
+      Subscriptions are managed by Apple. On your iPhone, open Settings, tap your name, then Subscriptions › TossLess, and choose Cancel Subscription.
+      Pro stays active until the end of the period you've paid for. Deleting the app doesn't cancel a subscription.
+    </p>
+
+    <h3>How do I get a refund?</h3>
+    <p>Refunds are handled by Apple, not by us. Request one at <a href="https://reportaproblem.apple.com">reportaproblem.apple.com</a>.</p>
+
+    <h3>Does the free trial cost anything?</h3>
+    <p>
+      The yearly plan may include a free trial. You won't be charged if you cancel at least 24 hours before the trial ends. Your iPhone shows the
+      exact trial length and price before you confirm.
+    </p>
+
+    <h2>Your data</h2>
+
+    <h3>Where is my food list stored? Can I use it on another device?</h3>
+    <p>
+      Your list is stored only on your iPhone. There is no account and no sync between devices yet. Deleting the app deletes your list. Read more in
+      the <a href="/privacy/">Privacy Policy</a>.
+    </p>
+
+    <h2>Contact</h2>
+    <p>Email <a href={mail}>{site.contactEmail}</a>.</p>
+  </div>
+</BaseLayout>
+
+<style>
+  .summary {
+    background: var(--primary-tint);
+    border-radius: 14px;
+    padding: 1rem;
+  }
+  h2 {
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+  }
+  h3 {
+    font-size: 1.15rem;
+    margin: 1.5rem 0 0.25rem;
+  }
+</style>
