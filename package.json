@@ -9,11 +9,15 @@
     "dev": "astro dev",
     "build": "astro build && node scripts/check-seo.mjs",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "printables": "node scripts/generate-printables.mjs"
   },
   "dependencies": {
     "@astrojs/rss": "^4.0.19",
     "@astrojs/sitemap": "^3.7.4",
     "astro": "^7.4.4"
+  },
+  "devDependencies": {
+    "pdfkit": "^0.20.2"
   }
 }
