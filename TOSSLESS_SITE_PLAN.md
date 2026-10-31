@@ -290,8 +290,8 @@ draft: true
 
 **Acceptance criteria**
 
-- [ ] Download links work and serve the correct file.
-- [ ] Each printable card has a unique title and description for sharing.
+- [x] Download links work and serve the correct file.
+- [x] Each printable card has a unique title and description for sharing.
 
 ### Phase 7 — Shelf-life lookup page
 

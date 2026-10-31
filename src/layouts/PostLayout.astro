@@ -8,6 +8,7 @@ import AppCta from '../components/AppCta.astro';
 import RelatedPosts from '../components/RelatedPosts.astro';
 import { site } from '../config/site';
 import { formatDate, isoDate } from '../lib/format';
+import { getPrintables } from '../lib/printables';
 
 interface Props {
   post: CollectionEntry<'blog'>;
@@ -18,6 +19,8 @@ const { post, published } = Astro.props;
 const { data } = post;
 const path = `/blog/${post.id}/`;
 const hero = data.heroImage;
+// Printables whose PDF exists and that list this article: link back to them.
+const printables = getPrintables().filter((p) => p.ready && p.articles.includes(post.id));
 ---
 
 <BaseLayout title={data.title} description={data.description} type="article" image={hero?.src}>
@@ -53,6 +56,21 @@ const hero = data.heroImage;
       <div class="body">
         <slot />
       </div>
+
+      {
+        printables.length > 0 && (
+          <aside class="printable card" aria-label="Free printable">
+            <strong>Free printable</strong>
+            <ul>
+              {printables.map((p) => (
+                <li>
+                  <a href={`/printables/#${p.id}`}>{p.title}</a> (PDF)
+                </li>
+              ))}
+            </ul>
+          </aside>
+        )
+      }
 
       {
         data.sources.length > 0 && (
@@ -96,6 +114,14 @@ const hero = data.heroImage;
   }
   .body :global(h2) {
     margin-top: 2rem;
+  }
+  .printable {
+    margin-top: 2rem;
+    background: var(--primary-tint);
+  }
+  .printable ul {
+    margin: 0.25rem 0 0;
+    padding-left: 1.2rem;
   }
   .sources {
     margin-top: 2.5rem;

@@ -1,25 +1,55 @@
 ---
+import { Image } from 'astro:assets';
+import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import AppCta from '../../components/AppCta.astro';
+import { getPrintables } from '../../lib/printables';
 
-const printables = [
-  { title: 'Fridge and freezer storage chart', text: 'A one-page chart of how long common foods keep.' },
-  { title: 'Freezer inventory', text: 'A sheet to track what is in your freezer and when it went in.' },
-  { title: 'Fridge inventory', text: 'A sheet to track what is in your fridge and what to use first.' },
-];
+// Optional preview images: src/assets/printables/<id>.png (or .jpg / .webp).
+const previews = import.meta.glob<{ default: ImageMetadata }>('../../assets/printables/*.{png,jpg,jpeg,webp}', { eager: true });
+const previewFor = (id: string) => Object.entries(previews).find(([path]) => path.split('/').pop()!.replace(/\.[^.]+$/, '') === id)?.[1].default;
+
+const published = await getCollection('blog', ({ data }) => !data.draft);
+const cards = getPrintables().map((p) => ({
+  ...p,
+  preview: previewFor(p.id),
+  // Only link to articles that are published.
+  related: p.articles.map((slug) => published.find((a) => a.id === slug)).filter((a) => a !== undefined),
+}));
 ---
 
 <BaseLayout title="Free printables" description="Free printable food storage charts and fridge and freezer inventory sheets to help you waste less food.">
   <div class="wrap page">
     <h1>Free printables</h1>
-    <p class="lede">Printable sheets for your kitchen. They are being finished and will appear here.</p>
+    <p class="lede">Printable sheets for your kitchen. Download, print and stick them on the fridge.</p>
+
     <ul class="grid">
       {
-        printables.map((p) => (
-          <li class="card">
+        cards.map((p) => (
+          <li class="card item" id={p.id}>
+            <div class="preview">
+              {p.preview ? (
+                <Image src={p.preview} alt={`Preview of the first page of the "${p.title}" printable.`} widths={[240, 400, 640]} sizes="(min-width: 48rem) 20rem, 90vw" />
+              ) : (
+                <span class="placeholder" aria-hidden="true">PDF</span>
+              )}
+            </div>
             <h2>{p.title}</h2>
-            <p>{p.text}</p>
-            <p class="soon">Coming soon</p>
+            <p>{p.description}</p>
+            {p.ready ? (
+              <p>
+                <a class="btn" href={p.href} download>
+                  Download PDF{p.sizeLabel ? ` (${p.sizeLabel})` : ''}
+                </a>
+              </p>
+            ) : (
+              <p class="soon">Coming soon</p>
+            )}
+            {p.related.length > 0 && (
+              <p class="related">
+                Read: {p.related.map((a, i) => (<>{i > 0 && ', '}<a href={`/blog/${a.id}/`}>{a.data.title}</a></>))}
+              </p>
+            )}
           </li>
         ))
       }
@@ -34,14 +64,48 @@ const printables = [
     padding: 0;
     display: grid;
     gap: 1rem;
-    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  }
+  .item {
+    display: flex;
+    flex-direction: column;
+    scroll-margin-top: calc(var(--header) + 1rem);
+  }
+  .preview {
+    aspect-ratio: 3 / 4;
+    margin-bottom: 1rem;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: var(--card-subtle);
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+  }
+  .preview :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+  }
+  .placeholder {
+    font-weight: 800;
+    font-size: 1.5rem;
+    letter-spacing: 0.1em;
+    color: var(--text-2);
   }
   h2 {
     font-size: 1.15rem;
-    margin-top: 0;
+    margin: 0 0 0.4rem;
   }
-  .soon {
+  p {
+    margin: 0 0 0.75rem;
+  }
+  .soon,
+  .related {
     color: var(--text-2);
+    font-size: 0.95rem;
+  }
+  .item > :last-child {
     margin-bottom: 0;
   }
 </style>
