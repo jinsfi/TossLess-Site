@@ -11,6 +11,7 @@ import reminderDark from '../assets/screenshots/dark/reminder.png';
 import itemDetailDark from '../assets/screenshots/dark/item-detail.png';
 import statsDark from '../assets/screenshots/dark/stats.png';
 
+// The order here is the order of the steps on the page.
 const steps = [
   {
     title: 'Add food in seconds',
@@ -50,66 +51,110 @@ const steps = [
 ];
 ---
 
-<div class="explorer">
-  {steps.map((s, i) => <input type="radio" name="step" id={`step-${i + 1}`} checked={i === 0} aria-label={s.title} />)}
-
-  <div class="tabs" role="presentation">
-    {
-      steps.map((s, i) => (
-        <label for={`step-${i + 1}`}>
-          <span class="num">{i + 1}</span>
-          <span class="body">
-            <strong>{s.title}</strong>
-            <span class="text">{s.text}</span>
-          </span>
-        </label>
-      ))
-    }
+<div class="scroller">
+  <div class="track">
+  <div class="pin">
+    <div class="pin-inner wrap">
+      <div class="intro">
+        <h2>Everything you need, nothing you don't</h2>
+        <p>Keep scrolling to see each step in the app.</p>
+      </div>
+      <div class="layout">
+        <ol class="tabs">
+          {
+            steps.map((s, i) => (
+              <li class="tab">
+                <span class="num">{i + 1}</span>
+                <span class="body">
+                  <strong>{s.title}</strong>
+                  <span class="text">{s.text}</span>
+                </span>
+              </li>
+            ))
+          }
+        </ol>
+        <div class="stage">
+          <Phone screens={steps} />
+        </div>
+      </div>
+    </div>
+  </div>
   </div>
 
-  <div class="stage">
-    <Phone screens={steps} />
+  <div class="triggers" aria-hidden="true">
+    {steps.map(() => <div class="trigger" />)}
   </div>
 </div>
 
 <style>
-  .explorer {
+  /* --on is 1 when a step is active and 0 when it is not; the scroll timelines animate it. */
+  @property --on {
+    syntax: '<number>';
+    inherits: true;
+    initial-value: 1;
+  }
+
+  .scroller {
+    --page-h: calc(100svh - var(--header));
     position: relative;
+    background: color-mix(in srgb, var(--card) 70%, transparent);
+    border-block: 1px solid var(--border);
+  }
+  .pin {
+    min-height: var(--page-h);
+    padding-block: 2.5rem;
+  }
+  .pin-inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.25rem;
+    min-height: inherit;
+  }
+  .intro {
+    text-align: center;
+  }
+  .intro h2 {
+    margin: 0 0 0.4rem;
+    font-size: clamp(1.4rem, 5vw, 2.5rem);
+    letter-spacing: -0.02em;
+  }
+  .intro p {
+    margin: 0;
+    color: var(--text-2);
+  }
+  .layout {
     display: grid;
-    gap: 1.5rem;
+    gap: 1.25rem;
+    justify-items: center;
     grid-template-areas:
       'stage'
       'tabs';
-    justify-items: center;
-  }
-  input {
-    position: absolute;
-    opacity: 0;
-    pointer-events: none;
   }
   .stage {
     grid-area: stage;
-    --phone-w: 12.5rem;
+    --phone-w: min(13rem, 25svh);
   }
   .tabs {
     grid-area: tabs;
+    list-style: none;
+    margin: 0;
+    padding: 0;
     display: grid;
     gap: 0.5rem;
     width: 100%;
+    max-width: 30rem;
   }
-  label {
+
+  .tab {
     display: flex;
     gap: 0.9rem;
     align-items: flex-start;
     padding: 0.8rem 1rem;
     border-radius: var(--radius);
-    border: 1px solid transparent;
-    cursor: pointer;
-    transition: background 0.25s, border-color 0.25s, transform 0.25s, box-shadow 0.25s;
-  }
-  label:hover {
-    background: var(--card);
-    border-color: var(--border);
+    background: color-mix(in srgb, var(--card) calc(var(--on) * 100%), transparent);
+    border: 1px solid color-mix(in srgb, var(--border) calc(var(--on) * 100%), transparent);
+    box-shadow: 0 10px 30px -18px rgb(30 60 40 / calc(var(--on) * 0.5));
   }
   .num {
     flex: none;
@@ -118,11 +163,10 @@ const steps = [
     display: grid;
     place-items: center;
     border-radius: 50%;
-    background: var(--card-subtle);
-    color: var(--text-2);
     font-weight: 700;
     font-size: 0.95rem;
-    transition: background 0.25s, color 0.25s;
+    background: color-mix(in srgb, var(--primary) calc(var(--on) * 100%), var(--card-subtle));
+    color: color-mix(in srgb, var(--on-primary) calc(var(--on) * 100%), var(--text-2));
   }
   .body {
     display: grid;
@@ -132,87 +176,159 @@ const steps = [
     line-height: 2rem;
   }
   .text {
-    display: none;
     color: var(--text-2);
-    font-size: 1rem;
   }
 
-  /* Active step: highlight its tab and show its screen. */
-  .explorer :global(.shot) {
-    opacity: 0;
-    transform: scale(1.03);
+  /* Without scroll-driven animations (or with reduced motion), show a plain static layout. */
+  .triggers {
+    display: none;
   }
-  input:nth-of-type(1):checked ~ .stage :global(.shot:nth-child(1)),
-  input:nth-of-type(2):checked ~ .stage :global(.shot:nth-child(2)),
-  input:nth-of-type(3):checked ~ .stage :global(.shot:nth-child(3)),
-  input:nth-of-type(4):checked ~ .stage :global(.shot:nth-child(4)),
-  input:nth-of-type(5):checked ~ .stage :global(.shot:nth-child(5)) {
-    opacity: 1;
-    transform: none;
-  }
-  input:nth-of-type(1):checked ~ .tabs label:nth-child(1),
-  input:nth-of-type(2):checked ~ .tabs label:nth-child(2),
-  input:nth-of-type(3):checked ~ .tabs label:nth-child(3),
-  input:nth-of-type(4):checked ~ .tabs label:nth-child(4),
-  input:nth-of-type(5):checked ~ .tabs label:nth-child(5) {
-    background: var(--card);
-    border-color: var(--border);
-    box-shadow: 0 10px 30px -18px rgb(30 60 40 / 0.5);
-  }
-  input:nth-of-type(1):checked ~ .tabs label:nth-child(1) .num,
-  input:nth-of-type(2):checked ~ .tabs label:nth-child(2) .num,
-  input:nth-of-type(3):checked ~ .tabs label:nth-child(3) .num,
-  input:nth-of-type(4):checked ~ .tabs label:nth-child(4) .num,
-  input:nth-of-type(5):checked ~ .tabs label:nth-child(5) .num {
-    background: var(--primary);
-    color: var(--on-primary);
-  }
-  input:nth-of-type(1):checked ~ .tabs label:nth-child(1) .text,
-  input:nth-of-type(2):checked ~ .tabs label:nth-child(2) .text,
-  input:nth-of-type(3):checked ~ .tabs label:nth-child(3) .text,
-  input:nth-of-type(4):checked ~ .tabs label:nth-child(4) .text,
-  input:nth-of-type(5):checked ~ .tabs label:nth-child(5) .text {
-    display: block;
-  }
-  input:nth-of-type(1):focus-visible ~ .tabs label:nth-child(1),
-  input:nth-of-type(2):focus-visible ~ .tabs label:nth-child(2),
-  input:nth-of-type(3):focus-visible ~ .tabs label:nth-child(3),
-  input:nth-of-type(4):focus-visible ~ .tabs label:nth-child(4),
-  input:nth-of-type(5):focus-visible ~ .tabs label:nth-child(5) {
-    outline: 3px solid var(--primary-text);
-    outline-offset: 2px;
+  .stage :global(.shot:where(:not(:first-child))) {
+    display: none;
   }
 
   @media (min-width: 52rem) {
-    .explorer {
+    .layout {
       grid-template-columns: 1fr auto;
       grid-template-areas: 'tabs stage';
       gap: 4rem;
       align-items: center;
+      justify-items: stretch;
     }
     .stage {
-      --phone-w: 17rem;
+      --phone-w: min(18rem, 32svh);
+      justify-self: center;
     }
     .tabs {
+      max-width: none;
       gap: 0.75rem;
     }
-    label {
+    .tab {
       padding: 1rem 1.25rem;
     }
-    .text {
-      display: block;
-      max-height: 0;
-      overflow: hidden;
-      opacity: 0;
-      transition: max-height 0.35s ease, opacity 0.35s ease;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: view()) and (timeline-scope: --a) {
+      .scroller {
+        timeline-scope: --s1, --s2, --s3, --s4, --s5;
+      }
+      .track {
+        position: absolute;
+        inset: 0;
+      }
+      .pin {
+        position: sticky;
+        top: var(--header);
+        height: var(--page-h);
+        min-height: 0;
+        padding-block: 1rem;
+      }
+      .triggers {
+        display: block;
+      }
+      .trigger {
+        height: var(--page-h);
+        scroll-snap-align: start;
+      }
+      .trigger:nth-child(1) { view-timeline: --s1 block; }
+      .trigger:nth-child(2) { view-timeline: --s2 block; }
+      .trigger:nth-child(3) { view-timeline: --s3 block; }
+      .trigger:nth-child(4) { view-timeline: --s4 block; }
+      .trigger:nth-child(5) { view-timeline: --s5 block; }
+
+      .tab,
+      .stage :global(.shot) {
+        animation-timing-function: linear;
+        animation-fill-mode: both;
+      }
+
+      /* Each screen fades in over the previous one as its step comes into view. */
+      .stage :global(.shot) {
+        display: block;
+      }
+      .stage :global(.shot:nth-child(2)) { animation-name: shot-in; animation-timeline: --s2; }
+      .stage :global(.shot:nth-child(3)) { animation-name: shot-in; animation-timeline: --s3; }
+      .stage :global(.shot:nth-child(4)) { animation-name: shot-in; animation-timeline: --s4; }
+      .stage :global(.shot:nth-child(5)) { animation-name: shot-in; animation-timeline: --s5; }
+
+      .tab:nth-child(1) { animation-name: tab-first; animation-timeline: --s1; }
+      .tab:nth-child(2) { animation-name: tab-mid; animation-timeline: --s2; }
+      .tab:nth-child(3) { animation-name: tab-mid; animation-timeline: --s3; }
+      .tab:nth-child(4) { animation-name: tab-mid; animation-timeline: --s4; }
+      .tab:nth-child(5) { animation-name: tab-last; animation-timeline: --s5; }
+
+      /* Phones: only the active step is shown, all stacked in one spot. */
+      .tabs {
+        min-height: 8.5rem;
+      }
+      .tab {
+        grid-area: 1 / 1;
+        align-self: start;
+        opacity: var(--on);
+      }
     }
-    input:nth-of-type(1):checked ~ .tabs label:nth-child(1) .text,
-    input:nth-of-type(2):checked ~ .tabs label:nth-child(2) .text,
-    input:nth-of-type(3):checked ~ .tabs label:nth-child(3) .text,
-    input:nth-of-type(4):checked ~ .tabs label:nth-child(4) .text,
-    input:nth-of-type(5):checked ~ .tabs label:nth-child(5) .text {
-      max-height: 8rem;
+  }
+
+  @media (min-width: 52rem) {
+    @media (prefers-reduced-motion: no-preference) {
+      @supports (animation-timeline: view()) and (timeline-scope: --a) {
+        /* Desktop: all titles stay in a list, the active one opens its text. */
+        .tabs {
+          min-height: 0;
+        }
+        .tab {
+          grid-area: auto;
+          opacity: 1;
+        }
+        .text {
+          max-height: calc(var(--on) * 8rem);
+          opacity: var(--on);
+          overflow: hidden;
+        }
+      }
+    }
+  }
+
+  @keyframes tab-first {
+    0%,
+    60% {
+      --on: 1;
+    }
+    100% {
+      --on: 0;
+    }
+  }
+  @keyframes tab-mid {
+    0% {
+      --on: 0;
+    }
+    40%,
+    60% {
+      --on: 1;
+    }
+    100% {
+      --on: 0;
+    }
+  }
+  @keyframes tab-last {
+    0% {
+      --on: 0;
+    }
+    40%,
+    100% {
+      --on: 1;
+    }
+  }
+  @keyframes shot-in {
+    0% {
+      opacity: 0;
+      transform: scale(1.05);
+    }
+    40%,
+    100% {
       opacity: 1;
+      transform: none;
     }
   }
 </style>
