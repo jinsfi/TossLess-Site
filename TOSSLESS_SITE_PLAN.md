@@ -228,11 +228,11 @@ export const site = {
 
 **Acceptance criteria**
 
-- [ ] Every page has a unique title and description (no duplicates across the build).
-- [ ] Canonical URLs are absolute and use the real domain.
+- [x] Every page has a unique title and description (no duplicates across the build).
+- [x] Canonical URLs are absolute and use the real domain.
 - [ ] Article JSON-LD validates in Google's Rich Results Test (owner checks after deploy).
-- [ ] Sitemap and RSS list only published articles.
-- [ ] `robots.txt` points to the sitemap that exists.
+- [x] Sitemap and RSS list only published articles.
+- [x] `robots.txt` points to the sitemap that exists.
 
 ### Phase 4 — Waitlist and call to action
 

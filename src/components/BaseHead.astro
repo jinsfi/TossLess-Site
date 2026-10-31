@@ -4,10 +4,14 @@ import { site } from '../config/site';
 interface Props {
   title: string;
   description: string;
+  image?: string;
+  type?: 'website' | 'article';
+  noindex?: boolean;
 }
 
-const { title, description } = Astro.props;
+const { title, description, image = '/og-default.png', type = 'website', noindex = false } = Astro.props;
 const canonical = new URL(Astro.url.pathname, site.url).href;
+const imageUrl = new URL(image, site.url).href;
 ---
 
 <meta charset="utf-8" />
@@ -16,5 +20,22 @@ const canonical = new URL(Astro.url.pathname, site.url).href;
 <title>{title}</title>
 <meta name="description" content={description} />
 <link rel="canonical" href={canonical} />
+{noindex && <meta name="robots" content="noindex" />}
+
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 <meta name="theme-color" content="#2e7d4f" />
+<link rel="alternate" type="application/rss+xml" title={`${site.name} articles`} href="/rss.xml" />
+
+<meta property="og:site_name" content={site.name} />
+<meta property="og:locale" content={site.lang === 'fr' ? 'fr_FR' : 'en_US'} />
+<meta property="og:type" content={type} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+<meta property="og:image" content={imageUrl} />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={imageUrl} />

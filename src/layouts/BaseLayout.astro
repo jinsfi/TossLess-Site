@@ -10,16 +10,20 @@ interface Props {
   description: string;
   home?: boolean;
   snap?: boolean;
+  image?: string;
+  type?: 'website' | 'article';
+  noindex?: boolean;
 }
 
-const { title, description, home = false, snap = false } = Astro.props;
+const { title, description, home = false, snap = false, image, type, noindex } = Astro.props;
 const fullTitle = home ? `${site.name} — ${title}` : `${title} · ${site.name}`;
 ---
 
 <!doctype html>
 <html lang={site.lang} class={snap ? 'snap' : undefined}>
   <head>
-    <BaseHead title={fullTitle} description={description} />
+    <BaseHead title={fullTitle} description={description} image={image} type={type} noindex={noindex} />
+    <slot name="head" />
   </head>
   <body>
     <Header />

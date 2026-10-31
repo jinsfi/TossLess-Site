@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import AppCta from '../components/AppCta.astro';
 import Phone from '../components/Phone.astro';
 import FeatureExplorer from '../components/FeatureExplorer.astro';
+import JsonLd from '../components/JsonLd.astro';
 import { site } from '../config/site';
 import home from '../assets/screenshots/home.png';
 import homeDark from '../assets/screenshots/dark/home.png';
@@ -15,6 +16,25 @@ const hero = [
   },
 ];
 
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: site.name,
+    url: site.url,
+    description: site.tagline,
+    inLanguage: site.lang,
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: site.name,
+    url: site.url,
+    logo: new URL('/logo-512.png', site.url).href,
+    email: site.contactEmail,
+  },
+];
+
 const benefits = [
   { title: 'Seconds, not minutes', text: 'Adding food takes a few taps, so you actually keep it up. No spreadsheets, no setup marathon.' },
   { title: 'One nudge, not ten', text: 'A single reminder a day, timed when you choose. It tells you what to eat, then gets out of the way.' },
@@ -23,6 +43,7 @@ const benefits = [
 ---
 
 <BaseLayout title={site.tagline} description={site.tagline} home snap>
+  <JsonLd slot="head" data={jsonLd} />
   <section class="hero snap-section">
     <div class="wrap hero-grid">
       <div class="copy">

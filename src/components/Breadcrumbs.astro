@@ -1,0 +1,54 @@
+---
+import JsonLd from './JsonLd.astro';
+import { site } from '../config/site';
+
+interface Crumb {
+  name: string;
+  href: string;
+}
+
+interface Props {
+  crumbs: Crumb[]; // in order, the last one is the current page
+}
+
+const { crumbs } = Astro.props;
+
+const data = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: crumbs.map((c, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    name: c.name,
+    item: new URL(c.href, site.url).href,
+  })),
+};
+---
+
+<nav class="crumbs" aria-label="Breadcrumb">
+  <ol>
+    {
+      crumbs.map((c, i) => (
+        <li>{i < crumbs.length - 1 ? <a href={c.href}>{c.name}</a> : <span aria-current="page">{c.name}</span>}</li>
+      ))
+    }
+  </ol>
+</nav>
+<JsonLd data={data} />
+
+<style>
+  .crumbs ol {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 0.5rem;
+    list-style: none;
+    margin: 0 0 1rem;
+    padding: 0;
+    font-size: 0.9rem;
+    color: var(--text-2);
+  }
+  li + li::before {
+    content: '›';
+    margin-right: 0.5rem;
+  }
+</style>

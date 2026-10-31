@@ -1,0 +1,37 @@
+---
+import JsonLd from './JsonLd.astro';
+import { site } from '../config/site';
+
+interface Props {
+  title: string;
+  description: string;
+  path: string; // e.g. /blog/cooked-rice-left-out-overnight/
+  image?: string;
+  datePublished: Date;
+  dateModified?: Date;
+}
+
+const { title, description, path, image = '/og-default.png', datePublished, dateModified } = Astro.props;
+
+const organization = {
+  '@type': 'Organization',
+  name: site.name,
+  url: new URL(site.author.url, site.url).href,
+};
+
+const data = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: title,
+  description,
+  image: new URL(image, site.url).href,
+  mainEntityOfPage: new URL(path, site.url).href,
+  datePublished: datePublished.toISOString(),
+  dateModified: (dateModified ?? datePublished).toISOString(),
+  // The byline is the brand, not a person.
+  author: organization,
+  publisher: { ...organization, '@id': site.url, logo: { '@type': 'ImageObject', url: new URL('/logo-512.png', site.url).href } },
+};
+---
+
+<JsonLd data={data} />

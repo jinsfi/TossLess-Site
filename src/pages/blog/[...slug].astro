@@ -1,0 +1,39 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import ArticleJsonLd from '../../components/ArticleJsonLd.astro';
+
+// Drafts are never built: no page, no sitemap entry, no RSS item.
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const path = `/blog/${post.id}/`;
+const image = post.data.heroImage?.src;
+---
+
+<BaseLayout title={post.data.title} description={post.data.description} type="article" image={image}>
+  <ArticleJsonLd
+    slot="head"
+    title={post.data.title}
+    description={post.data.description}
+    path={path}
+    image={image}
+    datePublished={post.data.pubDate}
+    dateModified={post.data.updatedDate}
+  />
+  <article class="wrap page prose">
+    <Breadcrumbs
+      crumbs={[
+        { name: 'Home', href: '/' },
+        { name: 'Blog', href: '/blog/' },
+        { name: post.data.title, href: path },
+      ]}
+    />
+    <Content />
+  </article>
+</BaseLayout>
