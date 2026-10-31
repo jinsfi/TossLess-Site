@@ -277,10 +277,10 @@ draft: true
 
 **Acceptance criteria**
 
-- [ ] A non-draft fridge article without `sources` fails the build with a clear message.
-- [ ] Byline shows author, published date and last-checked date.
-- [ ] Sources render as a list of links at the end of the article.
-- [ ] Related posts never include the current article.
+- [x] A non-draft fridge article without `sources` fails the build with a clear message.
+- [x] Byline shows author, published date and last-checked date.
+- [x] Sources render as a list of links at the end of the article.
+- [x] Related posts never include the current article.
 
 ### Phase 6 — Printables
 
@@ -411,7 +411,7 @@ Slugs are suggestions: adjust them to the site language and the exact phrasing f
 ### Structure
 
 ```markdown
-# [The question, as people type it]
+<!-- No H1 here: PostLayout renders the title from frontmatter. -->
 
 [Direct answer in 2–3 sentences, with the number and its source.]
 

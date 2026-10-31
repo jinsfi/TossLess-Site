@@ -8,8 +8,6 @@ sources: []
 draft: true
 ---
 
-# Cooked rice left out overnight: is it safe?
-
 TODO-VERIFY: direct answer in 2–3 sentences, with the number and its official source.
 
 ## Quick answer

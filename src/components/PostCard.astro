@@ -1,0 +1,60 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { postTypes } from '../lib/post-types';
+import { formatDate, isoDate } from '../lib/format';
+
+interface Props {
+  post: CollectionEntry<'blog'>;
+}
+
+const { post } = Astro.props;
+---
+
+<article class="card post-card" data-type={post.data.type}>
+  <p class="meta">
+    <span class="type">{postTypes[post.data.type]}</span>
+    <time datetime={isoDate(post.data.pubDate)}>{formatDate(post.data.pubDate)}</time>
+  </p>
+  <h3><a href={`/blog/${post.id}/`}>{post.data.title}</a></h3>
+  <p class="desc">{post.data.description}</p>
+</article>
+
+<style>
+  .post-card {
+    transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+  }
+  .post-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--primary);
+    box-shadow: 0 16px 36px -24px rgb(30 60 40 / 0.5);
+  }
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 0.75rem;
+    margin: 0 0 0.4rem;
+    font-size: 0.85rem;
+    color: var(--text-2);
+  }
+  .type {
+    color: var(--primary-text);
+    font-weight: 600;
+  }
+  h3 {
+    margin: 0 0 0.4rem;
+    font-size: 1.15rem;
+    line-height: 1.3;
+  }
+  h3 a {
+    color: var(--text);
+    text-decoration: none;
+  }
+  h3 a:hover {
+    color: var(--primary-text);
+  }
+  .desc {
+    margin: 0;
+    color: var(--text-2);
+    font-size: 0.95rem;
+  }
+</style>

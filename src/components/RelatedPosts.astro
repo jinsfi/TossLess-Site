@@ -1,0 +1,35 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import PostCard from './PostCard.astro';
+
+interface Props {
+  current: CollectionEntry<'blog'>;
+  posts: CollectionEntry<'blog'>[]; // published articles only
+}
+
+const { current, posts } = Astro.props;
+
+const newestFirst = (a: CollectionEntry<'blog'>, b: CollectionEntry<'blog'>) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf();
+const others = posts.filter((p) => p.id !== current.id).sort(newestFirst);
+// Same type first, then fill up from the other types.
+const related = [...others.filter((p) => p.data.type === current.data.type), ...others.filter((p) => p.data.type !== current.data.type)].slice(0, 3);
+---
+
+{
+  related.length > 0 && (
+    <section class="related" aria-labelledby="related-heading">
+      <h2 id="related-heading">Keep reading</h2>
+      <div class="grid">
+        {related.map((post) => <PostCard post={post} />)}
+      </div>
+    </section>
+  )
+}
+
+<style>
+  .grid {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  }
+</style>

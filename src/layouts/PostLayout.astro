@@ -1,0 +1,112 @@
+---
+import { Image } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+import BaseLayout from './BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import ArticleJsonLd from '../components/ArticleJsonLd.astro';
+import AppCta from '../components/AppCta.astro';
+import RelatedPosts from '../components/RelatedPosts.astro';
+import { site } from '../config/site';
+import { formatDate, isoDate } from '../lib/format';
+
+interface Props {
+  post: CollectionEntry<'blog'>;
+  published: CollectionEntry<'blog'>[]; // all published articles, for related posts
+}
+
+const { post, published } = Astro.props;
+const { data } = post;
+const path = `/blog/${post.id}/`;
+const hero = data.heroImage;
+---
+
+<BaseLayout title={data.title} description={data.description} type="article" image={hero?.src}>
+  <ArticleJsonLd
+    slot="head"
+    title={data.title}
+    description={data.description}
+    path={path}
+    image={hero?.src}
+    datePublished={data.pubDate}
+    dateModified={data.updatedDate}
+  />
+  <article class="wrap page">
+    <div class="prose">
+      <Breadcrumbs
+        crumbs={[
+          { name: 'Home', href: '/' },
+          { name: 'Blog', href: '/blog/' },
+          { name: data.title, href: path },
+        ]}
+      />
+      <h1>{data.title}</h1>
+      <p class="byline">
+        <a href={`${site.author.url}#how-we-check`}>By {site.author.name.replace(/^The /, 'the ')}</a>
+        <span aria-hidden="true">·</span>
+        <span>Published <time datetime={isoDate(data.pubDate)}>{formatDate(data.pubDate)}</time></span>
+        {data.updatedDate && <><span aria-hidden="true">·</span><span>Updated <time datetime={isoDate(data.updatedDate)}>{formatDate(data.updatedDate)}</time></span></>}
+        <span aria-hidden="true">·</span>
+        <span>Last checked <time datetime={isoDate(data.lastChecked)}>{formatDate(data.lastChecked)}</time></span>
+      </p>
+      {hero && <Image class="hero" src={hero} alt={data.heroAlt ?? ''} widths={[480, 800, 1200]} sizes="(min-width: 48rem) 44rem, 100vw" loading="eager" />}
+
+      <div class="body">
+        <slot />
+      </div>
+
+      {
+        data.sources.length > 0 && (
+          <section class="sources" aria-labelledby="sources-heading">
+            <h2 id="sources-heading">Sources</h2>
+            <ul>
+              {data.sources.map((s) => (
+                <li>
+                  <a href={s.url} rel="noopener">{s.name}</a>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )
+      }
+    </div>
+
+    <AppCta />
+    <RelatedPosts current={post} posts={published} />
+  </article>
+</BaseLayout>
+
+<style>
+  .byline {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 0.5rem;
+    margin: 0 0 1.5rem;
+    color: var(--text-2);
+    font-size: 0.95rem;
+  }
+  .byline a {
+    color: var(--primary-text);
+    font-weight: 600;
+  }
+  .hero {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius);
+    margin-bottom: 1.5rem;
+  }
+  .body :global(h2) {
+    margin-top: 2rem;
+  }
+  .sources {
+    margin-top: 2.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+  }
+  .sources h2 {
+    margin-top: 0;
+    font-size: 1.2rem;
+  }
+  .related {
+    margin-top: 2rem;
+  }
+</style>

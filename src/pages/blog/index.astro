@@ -1,11 +1,96 @@
 ---
+import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import PostCard from '../../components/PostCard.astro';
+import { postTypes, type PostType } from '../../lib/post-types';
+
+const published = (await getCollection('blog', ({ data }) => !data.draft)).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+// Only offer filters for topics that have at least one article.
+const types = (Object.keys(postTypes) as PostType[]).filter((t) => published.some((p) => p.data.type === t));
 ---
 
 <BaseLayout title="Blog" description="Answers to everyday food storage questions: how long food keeps, what to freeze, and how to waste less.">
   <div class="wrap page">
     <h1>Blog</h1>
     <p class="lede">Clear answers to food storage questions, checked against official sources.</p>
-    <p>The first articles are on the way.</p>
+
+    {
+      published.length === 0 ? (
+        <p>The first articles are on the way.</p>
+      ) : (
+        <div class="blog">
+          {/* Filtering uses the URL fragment (:target), so it works without JavaScript. */}
+          <span id="t-all" class="anchor" />
+          {types.map((t) => <span id={`t-${t}`} class="anchor" />)}
+
+          <nav class="filters" aria-label="Filter articles by topic">
+            <a href="#t-all" data-filter="all">All</a>
+            {types.map((t) => <a href={`#t-${t}`} data-filter={t}>{postTypes[t]}</a>)}
+          </nav>
+
+          <div class="list">
+            {published.map((post) => <PostCard post={post} />)}
+          </div>
+        </div>
+      )
+    }
   </div>
 </BaseLayout>
+
+<style>
+  .anchor {
+    display: block;
+    height: 0;
+    scroll-margin-top: calc(var(--header) + 1rem);
+  }
+  .filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 1.5rem 0;
+  }
+  .filters a {
+    padding: 0.35rem 0.9rem;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: var(--card);
+    color: var(--text);
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: background 0.2s, border-color 0.2s, color 0.2s;
+  }
+  .filters a:hover {
+    border-color: var(--primary);
+  }
+  .list {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
+  }
+
+  /* Highlight the active filter, and hide articles of other types. */
+  .blog:not(:has(:target)) .filters a[data-filter='all'],
+  #t-all:target ~ .filters a[data-filter='all'],
+  #t-app-intent:target ~ .filters a[data-filter='app-intent'],
+  #t-date-labels:target ~ .filters a[data-filter='date-labels'],
+  #t-fridge:target ~ .filters a[data-filter='fridge'],
+  #t-freezer:target ~ .filters a[data-filter='freezer'],
+  #t-habits:target ~ .filters a[data-filter='habits'],
+  #t-seasonal:target ~ .filters a[data-filter='seasonal'],
+  #t-resource:target ~ .filters a[data-filter='resource'],
+  #t-tool:target ~ .filters a[data-filter='tool'] {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: var(--on-primary);
+  }
+  #t-app-intent:target ~ .list :global(.post-card:not([data-type='app-intent'])),
+  #t-date-labels:target ~ .list :global(.post-card:not([data-type='date-labels'])),
+  #t-fridge:target ~ .list :global(.post-card:not([data-type='fridge'])),
+  #t-freezer:target ~ .list :global(.post-card:not([data-type='freezer'])),
+  #t-habits:target ~ .list :global(.post-card:not([data-type='habits'])),
+  #t-seasonal:target ~ .list :global(.post-card:not([data-type='seasonal'])),
+  #t-resource:target ~ .list :global(.post-card:not([data-type='resource'])),
+  #t-tool:target ~ .list :global(.post-card:not([data-type='tool'])) {
+    display: none;
+  }
+</style>
