@@ -10,6 +10,6 @@ export const site = {
     appStoreId: '', // numeric Apple ID
     appStoreUrl: '',
   },
-  kit: { formAction: 'TODO' },
+  kit: { formAction: 'https://app.kit.com/forms/10125901/subscriptions' },
   analytics: { cloudflareToken: 'TODO' },
 };

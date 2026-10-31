@@ -43,7 +43,7 @@ Put this file in the root of an empty folder (or the site repo) and start Claude
 | Contact email | `contact@tosslessapp.com` | For the press kit and privacy page. |
 | Brand colors | See `design/tokens.ts` in the app repo (primary `#2E7D4F`, background `#FAF7F2`) | Primary, accent, background, text. Taken from the app. |
 | App icon + screenshots | `TODO` | Exported from the app; go in `public/press/`. |
-| Kit form | `TODO` | Form embed code or form action URL from the Kit dashboard. |
+| Kit form | `https://app.kit.com/forms/10125901/subscriptions` (field `email_address`; after signup redirects to /thanks/) | Form embed code or form action URL from the Kit dashboard. |
 | Cloudflare Web Analytics token | `TODO` | From the Cloudflare dashboard. |
 | App Store ID and URL | *(empty until approval)* | Numeric Apple ID, filled on launch day. |
 | `app.launched` | `false` | Flipped to `true` on launch day (Phase 8). |
