@@ -46,13 +46,14 @@ const sections = Object.entries(groups)
   title="Food shelf life lookup"
   description="Search how long common foods keep in the pantry, fridge and freezer, with the official source for every entry."
 >
+  <noscript slot="head"><style>#search-box { display: none; }</style></noscript>
   <div class="wrap page">
     <h1>Food shelf life lookup</h1>
     <p class="lede">
       Search a food to see how long it keeps in the pantry, fridge and freezer. Every entry comes from an official US source, linked on each card.
     </p>
 
-    <div class="search" id="search-box" hidden>
+    <div class="search" id="search-box">
       <label for="q">Search for a food</label>
       <input id="q" type="search" placeholder="Try “ham”, “salmon” or “leftovers”" autocomplete="off" />
       <p id="status" role="status" aria-live="polite"></p>
@@ -194,10 +195,9 @@ const sections = Object.entries(groups)
 </style>
 
 <script>
-  // Without JavaScript the full list is shown. With it, the search box appears and filters the cards.
+  // Without JavaScript the full list is shown and the search box is hidden (see the noscript style). With it, the box filters the cards.
   const normalize = (s: string) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
 
-  const box = document.getElementById('search-box') as HTMLElement;
   const input = document.getElementById('q') as HTMLInputElement;
   const status = document.getElementById('status') as HTMLElement;
   const cards = Array.from(document.querySelectorAll<HTMLElement>('.food'));
@@ -215,7 +215,6 @@ const sections = Object.entries(groups)
     status.textContent = words.length === 0 ? '' : shown === 0 ? 'No foods found. Try a simpler word.' : `${shown} ${shown === 1 ? 'food' : 'foods'} found`;
   }
 
-  box.hidden = false;
   input.addEventListener('input', filter);
   filter();
 </script>

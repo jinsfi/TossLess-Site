@@ -12,6 +12,9 @@ interface Props {
 const { title, description, image = '/og-default.png', type = 'website', noindex = false } = Astro.props;
 const canonical = new URL(Astro.url.pathname, site.url).href;
 const imageUrl = new URL(image, site.url).href;
+// Cloudflare Web Analytics. With no token the snippet is left out (Cloudflare can also inject it for you).
+const analyticsToken = site.analytics.cloudflareToken;
+const analytics = Boolean(analyticsToken) && analyticsToken !== 'TODO';
 ---
 
 <meta charset="utf-8" />
@@ -39,3 +42,9 @@ const imageUrl = new URL(image, site.url).href;
 <meta name="twitter:title" content={title} />
 <meta name="twitter:description" content={description} />
 <meta name="twitter:image" content={imageUrl} />
+
+{
+  analytics && (
+    <script is:inline defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon={JSON.stringify({ token: analyticsToken })} />
+  )
+}

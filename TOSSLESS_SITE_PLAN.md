@@ -347,8 +347,8 @@ draft: true
 
 **Acceptance criteria**
 
-- [ ] Lighthouse scores recorded here: Home ___ · Article ___ · Shelf-life ___
-- [ ] Link check passes.
+- [x] Lighthouse scores recorded here (mobile, run locally on 1 November 2026; Performance / Accessibility / Best Practices / SEO): Home 98/100/100/100 · Article 100/100/100/100 · Shelf-life 100/100/100/100. Re-run monthly, ideally on the live site.
+- [x] Link check passes. (`scripts/check-links.mjs` runs on every build: 201 internal links, 0 broken.)
 
 ---
 

@@ -8,6 +8,8 @@
   --primary-pressed: #235f3c;
   --primary-text: #2e7d4f;
   --primary-tint: #e6f1e4;
+  --on-tint: #235f3c; /* links and labels on --primary-tint, 4.5:1 or better */
+  --text-2-on-tint: #4a524d;
   --on-primary: #ffffff;
   --border: #ece6dc;
   --radius: 16px;
@@ -27,6 +29,8 @@
     --text-2: #a4aba6;
     --primary-text: #7cc89a;
     --primary-tint: #1e3322;
+    --on-tint: #a8d5a6;
+    --text-2-on-tint: #c9cec9;
     --border: #2c332f;
   }
 }
