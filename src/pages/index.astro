@@ -47,11 +47,11 @@ const benefits = [
   <section class="hero snap-section">
     <div class="wrap hero-grid">
       <div class="copy">
-        <p class="eyebrow">Coming soon to iPhone</p>
+        <p class="eyebrow">{site.app.launched ? 'Now on the App Store' : 'Coming soon to iPhone'}</p>
         <h1>Know what to <span class="mark">eat first.</span></h1>
         <p class="lede">Add food in seconds, get one reminder a day, and stop throwing food and money away.</p>
         <div class="actions">
-          <a class="btn" href="#get-the-app">Get notified at launch</a>
+          <a class="btn" href="#get-the-app">{site.app.launched ? 'Get the app' : 'Get notified at launch'}</a>
           <a class="btn ghost" href="#how-it-works">See how it works</a>
         </div>
       </div>

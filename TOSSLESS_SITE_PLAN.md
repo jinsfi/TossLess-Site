@@ -247,8 +247,8 @@ export const site = {
 **Acceptance criteria**
 
 - [ ] A test signup reaches the Kit list (owner checks).
-- [ ] Switching `app.launched` to `true` swaps every CTA to the badge with no other code change.
-- [ ] The form works without JavaScript enabled.
+- [x] Switching `app.launched` to `true` swaps every CTA to the badge with no other code change. (Needs Apple's badge at `public/badges/download-on-the-app-store.svg` and the App Store URL; the build fails with a clear message if either is missing.)
+- [x] The form works without JavaScript enabled. (Plain HTML form, no scripts on the page.)
 
 ### Phase 5 — Content system
 

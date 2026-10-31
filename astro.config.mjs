@@ -6,5 +6,6 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://tosslessapp.com',
   output: 'static',
-  integrations: [sitemap()],
+  // /thanks/ is a noindex confirmation page, so keep it out of the sitemap.
+  integrations: [sitemap({ filter: (page) => !page.endsWith('/thanks/') })],
 });

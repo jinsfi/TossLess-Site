@@ -3,6 +3,7 @@ import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import ArticleJsonLd from '../../components/ArticleJsonLd.astro';
+import AppCta from '../../components/AppCta.astro';
 
 // Drafts are never built: no page, no sitemap entry, no RSS item.
 export async function getStaticPaths() {
@@ -35,5 +36,6 @@ const image = post.data.heroImage?.src;
       ]}
     />
     <Content />
+    <AppCta />
   </article>
 </BaseLayout>

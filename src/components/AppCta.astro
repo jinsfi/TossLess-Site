@@ -1,8 +1,13 @@
 ---
 import { site } from '../config/site';
+import WaitlistForm from './WaitlistForm.astro';
+import AppStoreBadge from './AppStoreBadge.astro';
 
-// Pre-launch placeholder. Phase 4 replaces the paragraph with WaitlistForm and the
-// launched branch with AppStoreBadge.
+// launched: App Store badge. Not launched: the waitlist form, once the Kit form action is set.
+const formReady = Boolean(site.kit.formAction) && site.kit.formAction !== 'TODO';
+if (!site.app.launched && !formReady) {
+  console.warn('[AppCta] site.kit.formAction is not set: showing the "coming soon" text instead of the waitlist form.');
+}
 ---
 
 <section class="cta card">
@@ -10,12 +15,19 @@ import { site } from '../config/site';
     site.app.launched ? (
       <>
         <h2>Get TossLess</h2>
-        <p>Download TossLess on the App Store.</p>
+        <p>Know what to eat first. Download TossLess on the App Store.</p>
+        <AppStoreBadge />
       </>
     ) : (
       <>
-        <h2>TossLess is coming soon</h2>
-        <p>The waitlist opens shortly. Questions? Write to <a href={`mailto:${site.contactEmail}`}>{site.contactEmail}</a>.</p>
+        <h2>Get notified when TossLess launches</h2>
+        {formReady ? (
+          <WaitlistForm />
+        ) : (
+          <p>
+            The waitlist opens shortly. Questions? Write to <a href={`mailto:${site.contactEmail}`}>{site.contactEmail}</a>.
+          </p>
+        )}
       </>
     )
   }
@@ -30,6 +42,9 @@ import { site } from '../config/site';
     margin-top: 0;
   }
   p {
+    margin-top: 0;
+  }
+  .cta > :last-child {
     margin-bottom: 0;
   }
 </style>

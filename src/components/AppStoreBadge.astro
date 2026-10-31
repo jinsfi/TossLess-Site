@@ -1,0 +1,29 @@
+---
+import { existsSync } from 'node:fs';
+import { join } from 'node:path';
+import { site } from '../config/site';
+
+// Apple's official "Download on the App Store" artwork, from Apple's marketing resources
+// (https://developer.apple.com/app-store/marketing/guidelines/). Do not redraw or restyle it.
+const BADGE = '/badges/download-on-the-app-store.svg';
+
+if (!site.app.appStoreUrl) throw new Error('site.app.launched is true but site.app.appStoreUrl is empty.');
+if (!existsSync(join(process.cwd(), 'public', BADGE))) {
+  throw new Error(`site.app.launched is true but public${BADGE} is missing. Add Apple's official badge file.`);
+}
+---
+
+<a class="badge" href={site.app.appStoreUrl}>
+  <img src={BADGE} alt="Download on the App Store" height="48" />
+</a>
+
+<style>
+  .badge {
+    display: inline-block;
+    line-height: 0;
+  }
+  img {
+    height: 48px;
+    width: auto;
+  }
+</style>

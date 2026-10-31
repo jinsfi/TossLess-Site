@@ -1,0 +1,57 @@
+---
+import { site } from '../config/site';
+
+// A plain HTML form that posts straight to Kit, so it works with JavaScript off.
+// Copy the action URL (and check the email field name) from Kit's "Embed using HTML" code.
+const { formAction } = site.kit;
+const id = `waitlist-${Math.random().toString(36).slice(2, 8)}`;
+---
+
+<form class="waitlist" action={formAction} method="post">
+  <label class="sr-only" for={id}>Email address</label>
+  <div class="row">
+    <input id={id} type="email" name="email_address" placeholder="you@example.com" autocomplete="email" required />
+    <button class="btn" type="submit">Notify me</button>
+  </div>
+  <p class="note">One email when TossLess launches, then occasional food-saving tips. Unsubscribe anytime. <a href="/privacy/#email-signup">How we use your email</a>.</p>
+</form>
+
+<style>
+  .waitlist {
+    max-width: 30rem;
+  }
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  input {
+    flex: 1 1 14rem;
+    min-width: 0;
+    padding: 0.75rem 1rem;
+    font: inherit;
+    color: var(--text);
+    background: var(--card);
+    border: 1.5px solid var(--border);
+    border-radius: 14px;
+  }
+  input::placeholder {
+    color: var(--text-2);
+  }
+  input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary) 25%, transparent);
+  }
+  button {
+    border: 0;
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .note {
+    margin: 0.6rem 0 0;
+    font-size: 0.9rem;
+    color: var(--text-2);
+  }
+</style>
